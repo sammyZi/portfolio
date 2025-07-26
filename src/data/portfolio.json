@@ -12,7 +12,7 @@
   "hero": {
     "greeting": "~/welcome-to-portfolio",
     "typingLines": [
-      { "text": "Hello,", "className": "text-primary glow-text" },
+      { "text": "Hello,", "className": "text-primary" },
       {
         "text": "I'm a React Native Developer!!!",
         "className": "text-foreground"
