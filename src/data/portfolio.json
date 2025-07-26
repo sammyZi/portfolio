@@ -1,6 +1,6 @@
 {
   "navigation": {
-    "brand": "Sami@portfolio",
+    "brand": "Sam@portfolio",
     "links": [
       { "name": "Home", "href": "#home" },
       { "name": "About", "href": "#about" },
