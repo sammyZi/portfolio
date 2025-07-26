@@ -1,0 +1,239 @@
+{
+  "navigation": {
+    "brand": "Sam@portfolio",
+    "links": [
+      { "name": "Home", "href": "#home" },
+      { "name": "About", "href": "#about" },
+      { "name": "Skills", "href": "#skills" },
+      { "name": "Projects", "href": "#projects" },
+      { "name": "Contact", "href": "#contact" }
+    ]
+  },
+  "hero": {
+    "greeting": "~/welcome-to-portfolio",
+    "typingLines": [
+      { "text": "Hello,", "className": "text-primary glow-text" },
+      {
+        "text": "I'm a React Native Developer!!!",
+        "className": "text-foreground"
+      }
+    ],
+    "subtitle": "React Native developer focused on building smooth, cross-platform mobile apps with great user experiences.",
+    "ctaButton": "View Projects"
+  },
+  "about": {
+    "command": "cat ~/about.txt",
+    "title": "About Me",
+    "name": "Samarth Bhinge",
+    "description1": "As a React Native developer, I specialize in crafting fast, reliable, and visually appealing mobile apps that run seamlessly on both iOS and Android.",
+    "description2": "When I'm not coding, you'll find me exploring new mobile frameworks, testing out UI patterns, or staying updated with the latest trends in cross-platform development.",
+    "details": [
+      { "label": "Experience", "value": "<1 Year" },
+      { "label": "Location", "value": "Pune,India" },
+      {
+        "label": "Status",
+        "value": "Available",
+        "className": "text-terminal-success"
+      },
+      { "label": "Focus", "value": "React Native & Mobile Development" }
+    ],
+    "terminal": {
+      "title": "~/profile",
+      "lines": [
+        {
+          "command": "$ whoami",
+          "output": "Samarth Bhinge",
+          "outputClass": "text-terminal-output"
+        },
+        {
+          "command": "$ ls skills/",
+          "output": "react-native/ expo/ typescript/ mobile-tools/",
+          "outputClass": "text-terminal-output"
+        },
+        {
+          "command": "$ echo $PASSION",
+          "output": "building-amazing-mobile-apps",
+          "outputClass": "text-terminal-output"
+        }
+      ]
+    }
+  },
+  "skills": {
+    "command": "ls -la ~/skills",
+    "title": "Technical Skills",
+    "subtitle": "A comprehensive toolkit for modern mobile development",
+    "categories": [
+      {
+        "title": "Mobile Development",
+        "description": "Building cross-platform mobile applications",
+        "folder": "mobile/",
+        "items": [
+          {
+            "name": "React Native",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+          },
+          {
+            "name": "Expo",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+          },
+          {
+            "name": "TypeScript",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+          },
+          {
+            "name": "Redux",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
+          }
+        ]
+      },
+      {
+        "title": "Backend Integration",
+        "description": "Connecting mobile apps to scalable backend services",
+        "folder": "backend/",
+        "items": [
+          {
+            "name": "Node.js & Express",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+          },
+          {
+            "name": "Firebase",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+          },
+          {
+            "name": "REST & GraphQL",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg"
+          },
+          {
+            "name": "MongoDB",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+          }
+        ]
+      },
+      {
+        "title": "Tools & DevOps",
+        "description": "Development and deployment tools for mobile apps",
+        "folder": "tools/",
+        "items": [
+          {
+            "name": "Git & GitHub",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+          },
+          {
+            "name": "Docker",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+          },
+          {
+            "name": "AWS",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+          }
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "command": "find ~/projects -type f",
+    "title": "Featured Projects",
+    "subtitle": "A showcase of my recent mobile app projects",
+    "items": [
+      {
+        "folder": "project-01/",
+        "title": "Task Manager App",
+        "description": "A simple and powerful Task Management App built with React Native and Firebase. Manage your daily tasks with ease — create, update, filter, and organize them based on priority and status.",
+        "tags": [
+          { "name": "React Native", "class": "bg-primary/20 text-primary" },
+          { "name": "Expo", "class": "bg-teal-100 text-teal-800" },
+          { "name": "Tailwind", "class": "bg-primary/20 text-primary" },
+          { "name": "Firebase", "class": "bg-teal-100 text-teal-800" },
+          { "name": "Zustand", "class": "bg-primary/20 text-primary" }
+        ],
+        "buttons": [
+          {
+            "text": "GitHub",
+            "variant": "outline",
+            "link": "https://github.com/sammyZi/Gig--task-management-react-native"
+          }
+        ]
+      },
+      {
+        "folder": "project-02/",
+        "title": "Student Attendance App",
+        "description": "A React Native app to manage student attendance for sessions using student card numbers and date selection.",
+        "tags": [
+          { "name": "React Native", "class": "bg-primary/20 text-primary" },
+          { "name": "Firebase", "class": "bg-teal-100 text-teal-800" },
+          { "name": "Tailwind", "class": "bg-primary/20 text-primary" }
+        ],
+        "buttons": [
+          {
+            "text": "GitHub",
+            "variant": "outline",
+            "link": "https://github.com/sammyZi/Student-Attendence-React-Native"
+          }
+        ]
+      },
+      {
+        "folder": "project-03/",
+        "title": "Restate",
+        "description": "This is a mobile application project for browsing and managing real estate listings, built with a modern and user-friendly interface.",
+        "tags": [
+          { "name": "React Native", "class": "bg-primary/20 text-primary" },
+          { "name": "Expo", "class": "bg-teal-100 text-teal-800" },
+          { "name": "Tailwind", "class": "bg-primary/20 text-primary" },
+          { "name": "App State", "class": "bg-teal-100 text-teal-800" }
+        ],
+        "buttons": [
+          {
+            "text": "GitHub",
+            "variant": "outline",
+            "link": "https://github.com/sammyZi/Real-Estate-App-React-Native"
+          }
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "command": "cat ~/contact-info.txt",
+    "title": "Let's Work Together",
+    "subtitle": "Ready to bring your mobile app ideas to life? Let's discuss your next project.",
+    "info": {
+      "title": "contact.txt",
+      "details": [
+        {
+          "label": "email:",
+          "value": "bhingesamarth@gmail.com",
+          "href": "mailto:bhingesamarth@gmail.com"
+        },
+        {
+          "label": "github:",
+          "value": "github.com/sammyZi",
+          "href": "https://github.com/sammyZi"
+        },
+        {
+          "label": "linkedin:",
+          "value": "linkedin.com/in/samarth-bhinge",
+          "href": "https://linkedin.com/in/samarth-bhinge"
+        },
+        {
+          "label": "Instagram:",
+          "value": "@sammyi_57",
+          "href": "https://www.instagram.com/sammyi_57/"
+        }
+      ]
+    },
+    "availability": {
+      "title": "availability.txt",
+      "command": "$ cat availability",
+      "lines": [
+        "✓ Available for freelance",
+        "✓ Open to full-time roles",
+        "✓ Consulting projects"
+      ],
+      "responseTime": "Response time: ~24 hours"
+    },
+    "ctaButton": "Get In Touch",
+    "ctaLink": "mailto:bhingesamarth@gmail.com"
+  },
+  "footer": {
+    "prompt": "Sam@portfolio:~$"
+  }
+}
