@@ -164,7 +164,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10"></div>
         <div className="container mx-auto px-6 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="font-mono text-primary mb-6 text-lg glow-text min-h-[30px] sm:min-h-[36px] md:min-h-[40px] animate-fade-in">
+            <div className="font-mono text-primary mb-6 text-lg min-h-[30px] sm:min-h-[36px] md:min-h-[40px] animate-fade-in">
               <span className="inline-block">
                 {portfolioData.hero.greeting}
               </span>
