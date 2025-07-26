@@ -211,7 +211,7 @@ const Index = () => {
             >
               <Button
                 asChild
-                className="gradient-button px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-glow rounded-xl"
+                className="gradient-button px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 rounded-xl"
                 size="lg"
               >
                 <a href="#about">About Me</a>
