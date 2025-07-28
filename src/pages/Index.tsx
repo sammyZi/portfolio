@@ -272,7 +272,7 @@ const Index = () => {
                   {detail.label === "Status" && (
                     <span className="inline-block w-3 h-3 mr-2 bg-green-500 rounded-full glow-text"></span>
                   )}
-                  <span>{detail.value}</span>
+                  <span className="glow-text">{detail.value}</span>
                 </div>
               </div>
             ))}
