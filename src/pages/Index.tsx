@@ -249,7 +249,7 @@ const Index = () => {
           {portfolioData.about.title}
         </h2>
         <div className="space-y-6 text-lg leading-relaxed">
-          <p className="text-2xl md:text-3xl font-bold mb-8">
+          <p className="text-2xl md:text-3xl font-bold mb-8 glow-text">
             {portfolioData.about.name}
           </p>
           <p className="text-muted-foreground">
@@ -272,7 +272,7 @@ const Index = () => {
                   {detail.label === "Status" && (
                     <span className="inline-block w-3 h-3 mr-2 bg-green-500 rounded-full glow-text"></span>
                   )}
-                  <span className="glow-text">{detail.value}</span>
+                  <span>{detail.value}</span>
                 </div>
               </div>
             ))}
