@@ -179,7 +179,7 @@
           { "name": "React Native", "class": "bg-primary/20 text-primary" },
           { "name": "Expo", "class": "bg-teal-100 text-teal-800" },
           { "name": "Tailwind", "class": "bg-primary/20 text-primary" },
-          { "name": "App State", "class": "bg-teal-100 text-teal-800" }
+          { "name": "App Write", "class": "bg-teal-100 text-teal-800" }
         ],
         "buttons": [
           {
