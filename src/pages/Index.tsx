@@ -249,7 +249,7 @@ const Index = () => {
           {portfolioData.about.title}
         </h2>
         <div className="space-y-6 text-lg leading-relaxed">
-          <p className="text-2xl md:text-3xl font-bold mb-8 glow-text">
+          <p className="text-2xl md:text-3xl font-bold mb-8">
             {portfolioData.about.name}
           </p>
           <p className="text-muted-foreground">
@@ -501,7 +501,7 @@ const Index = () => {
                       <a
                         href={detail.href}
                         target="_blank"
-                        className="text-terminal-success hover:underline transition-colors"
+                        className="hover:underline transition-colors"
                       >
                         {detail.value}
                       </a>
