@@ -501,7 +501,7 @@ const Index = () => {
                       <a
                         href={detail.href}
                         target="_blank"
-                        className="text-muted-foreground hover:underline transition-colors glow-text"
+                        className="text-muted-foreground hover:underline transition-colors"
                       >
                         {detail.value}
                       </a>
