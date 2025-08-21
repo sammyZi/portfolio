@@ -12,14 +12,17 @@ const Index = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 }
+      // Start the animation when the element is 15% visible
+      { threshold: 0.15 }
     );
-
-    const sections = document.querySelectorAll(".section-fade-in");
-    sections.forEach((section) => observer.observe(section));
+    
+    // The observer now looks for any element with the 'animate-on-scroll' class
+    const elements = document.querySelectorAll(".animate-on-scroll");
+    elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
@@ -35,53 +38,36 @@ const Index = () => {
             scroll-behavior: smooth;
           }
 
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes slideInLeft {
-            from {
-              opacity: 0;
-              transform: translateX(-50px);
-            }
-            to {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-
-          @keyframes slideInRight {
-            from {
-              opacity: 0;
-              transform: translateX(50px);
-            }
-            to {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-
-          .animate-fade-in {
-            animation: fadeInUp 0.8s ease-out forwards;
+          /* --- NEW ANIMATION STYLES START --- */
+          
+          /* Base class for all scroll animations */
+          .animate-on-scroll {
             opacity: 0;
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
           }
 
-          .animate-slide-in-left {
-            animation: slideInLeft 0.8s ease-out forwards;
-            opacity: 0;
+          /* Fade Up Animation */
+          .animate-fade-up {
+             transform: translateY(30px);
           }
 
-          .animate-slide-in-right {
-            animation: slideInRight 0.8s ease-out forwards;
-            opacity: 0;
+          /* Side Fade In (Left) */
+          .animate-fade-in-left {
+            transform: translateX(-30px);
           }
+          
+          /* Side Fade In (Right) */
+          .animate-fade-in-right {
+            transform: translateX(30px);
+          }
+          
+          /* When visible, reset transform and fade in */
+          .animate-on-scroll.visible {
+            opacity: 1;
+            transform: none; /* Can be translateX(0) or translateY(0) or none */
+          }
+          
+          /* --- NEW ANIMATION STYLES END --- */
 
           .hover-scale {
             transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
@@ -92,19 +78,6 @@ const Index = () => {
             opacity: 0.95;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
           }
-
-          /* --- MODIFIED CODE START --- */
-          .section-fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-          }
-
-          .section-fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          /* --- MODIFIED CODE END --- */
 
           .terminal-button {
             width: 12px;
@@ -127,9 +100,9 @@ const Index = () => {
           }
             @keyframes vanish-blink {
               0% { opacity: 1; }
-              15% { opacity: 0; } /* Fast fade-out over 0.3s */
-              60% { opacity: 0; } /* Stay invisible until 60% (0.9s) */
-              100% { opacity: 1; } /* Slow fade-in over 0.8s */
+              15% { opacity: 0; }
+              60% { opacity: 0; }
+              100% { opacity: 1; }
             }
           .animate-vanish-blink {
             animation: vanish-blink 2s ease-in-out infinite;
@@ -149,7 +122,7 @@ const Index = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-muted-foreground hover:text-primary transition-all duration-300 font-medium animate-slide-in-left"
+                  className="text-muted-foreground hover:text-primary transition-all duration-300 font-medium"
                 >
                   {item.name}
                 </a>
@@ -168,14 +141,13 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10"></div>
         <div className="container mx-auto px-6 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="font-mono text-primary glow-text mb-6 text-lg min-h-[30px] sm:min-h-[36px] md:min-h-[40px] animate-fade-in">
+            <div className="font-mono text-primary glow-text mb-6 text-lg min-h-[30px] sm:min-h-[36px] md:min-h-[40px]">
               <span className="inline-block">
                 {portfolioData.hero.greeting}
               </span>
             </div>
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold mb-8 animate-slide-up min-h-[120px] sm:min-h-[140px] md:min-h-[180px] flex flex-col justify-start"
-              style={{ animationDelay: "0.2s" }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold mb-8 min-h-[120px] sm:min-h-[140px] md:min-h-[180px] flex flex-col justify-start"
             >
               {portfolioData.hero.typingLines.map((line, index) => (
                 <div
@@ -192,7 +164,7 @@ const Index = () => {
                             loop: false,
                             delay: 80,
                             deleteSpeed: Infinity,
-                            cursor: "|", // Disable cursor to prevent second pipe
+                            cursor: "|",
                           }}
                         />
                       </div>
@@ -204,14 +176,12 @@ const Index = () => {
               ))}
             </h1>
             <p
-              className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in"
-              style={{ animationDelay: "0.4s" }}
+              className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
             >
               {portfolioData.hero.subtitle}
             </p>
             <div
-              className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in"
-              style={{ animationDelay: "0.6s" }}
+              className="flex flex-col sm:flex-row gap-6 justify-center"
             >
               <Button
                 asChild
@@ -241,11 +211,11 @@ const Index = () => {
       {/* About Section */}
       <section
         id="about"
-        className="min-h-screen py-16 section-fade-in"
+        className="min-h-screen py-16 animate-on-scroll animate-fade-up"
       >
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="animate-slide-in-left">
+            <div>
               <div className="font-mono text-primary mb-6 text-lg glow-text">
                 {portfolioData.about.command}
               </div>
@@ -283,7 +253,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <div className="animate-slide-in-right">
+            <div>
               <Card className="terminal-window glass-effect terminal-glow">
                 <div className="terminal-header">
                   <div className="flex gap-2">
@@ -312,18 +282,18 @@ const Index = () => {
       {/* Skills Section */}
       <section
         id="skills"
-        className="min-h-screen flex items-center section-fade-in"
+        className="min-h-screen flex items-center"
       >
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-on-scroll animate-fade-up">
             <div className="font-mono text-primary mb-6 text-lg glow-text">
               {portfolioData.skills.command}
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">
               {portfolioData.skills.title}
             </h2>
             <p
-              className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in"
+              className="text-xl text-muted-foreground max-w-2xl mx-auto"
               style={{ animationDelay: "0.2s" }}
             >
               {portfolioData.skills.subtitle}
@@ -334,8 +304,8 @@ const Index = () => {
             {portfolioData.skills.categories.map((category, index) => (
               <Card
                 key={category.title}
-                className="terminal-window glass-effect hover-scale"
-                style={{ animationDelay: `${0.2 * index}s` }}
+                className="terminal-window glass-effect hover-scale animate-on-scroll animate-fade-up"
+                style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="terminal-header">
                   <div className="flex gap-2">
@@ -349,12 +319,11 @@ const Index = () => {
                 </div>
                 <div className="p-6">
                   <div className="mb-6">
-                    <h3 className="text-xl font-bold text-primary mb-2 animate-fade-in">
+                    <h3 className="text-xl font-bold text-primary mb-2">
                       {category.title}
                     </h3>
                     <p
-                      className="text-muted-foreground text-sm animate-fade-in"
-                      style={{ animationDelay: "0.1s" }}
+                      className="text-muted-foreground text-sm"
                     >
                       {category.description}
                     </p>
@@ -363,8 +332,7 @@ const Index = () => {
                     {category.items.map((item, itemIndex) => (
                       <div
                         key={item.name}
-                        className="flex items-center gap-2 animate-fade-in"
-                        style={{ animationDelay: `${0.1 * itemIndex}s` }}
+                        className="flex items-center gap-2"
                       >
                         <img
                           src={item.icon}
@@ -385,10 +353,10 @@ const Index = () => {
       {/* Projects Section */}
       <section
         id="projects"
-        className="min-h-screen section-fade-in py-16" // Removed items-center, added padding
+        className="min-h-screen py-16"
       >
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-on-scroll animate-fade-up">
             <div className="font-mono text-primary mb-6 text-lg glow-text">
               {portfolioData.projects.command}
             </div>
@@ -404,7 +372,10 @@ const Index = () => {
             {portfolioData.projects.items.map((project, index) => (
               <Card
                 key={index}
-                className="terminal-window glass-effect project-card group flex flex-col min-h-[370px]" // Added flex-col and min-h
+                className={`terminal-window glass-effect project-card group flex flex-col min-h-[370px] animate-on-scroll ${
+                  index % 2 === 0 ? 'animate-fade-in-right' : 'animate-fade-in-left'
+                }`}
+                style={{ transitionDelay: `${(index % 2) * 150}ms` }}
               >
                 <div className="terminal-header">
                   <div className="flex gap-2">
@@ -418,8 +389,6 @@ const Index = () => {
                 </div>
 
                 <div className="p-6 flex flex-col flex-grow">
-                  {" "}
-                  {/* Added flex-col and flex-grow */}
                   <h3 className="text-2xl font-bold text-primary mb-3">
                     {project.title}
                   </h3>
@@ -427,8 +396,6 @@ const Index = () => {
                     {project.description}
                   </p>
                   <div className="mt-auto">
-                    {" "}
-                    {/* Pushes tags and buttons to bottom */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.tags.map((tag, tagIndex) => (
                         <span
@@ -469,7 +436,7 @@ const Index = () => {
       {/* Contact Section */}
       <section
         id="contact"
-        className="min-h-screen flex items-center section-fade-in"
+        className="min-h-screen flex items-center animate-on-scroll animate-fade-up"
       >
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
