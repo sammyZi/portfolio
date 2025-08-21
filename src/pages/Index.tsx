@@ -93,14 +93,18 @@ const Index = () => {
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
           }
 
+          /* --- MODIFIED CODE START --- */
           .section-fade-in {
             opacity: 0;
-            transition: opacity 0.8s ease-out;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
           }
 
           .section-fade-in.visible {
             opacity: 1;
+            transform: translateY(0);
           }
+          /* --- MODIFIED CODE END --- */
 
           .terminal-button {
             width: 12px;
@@ -122,14 +126,14 @@ const Index = () => {
             50% { transform: translate(-50%, -10px); }
           }
             @keyframes vanish-blink {
-  0% { opacity: 1; }
-  15% { opacity: 0; } /* Fast fade-out over 0.3s */
-  60% { opacity: 0; } /* Stay invisible until 60% (0.9s) */
-  100% { opacity: 1; } /* Slow fade-in over 0.8s */
-}
-.animate-vanish-blink {
-  animation: vanish-blink 2s ease-in-out infinite;
-}
+              0% { opacity: 1; }
+              15% { opacity: 0; } /* Fast fade-out over 0.3s */
+              60% { opacity: 0; } /* Stay invisible until 60% (0.9s) */
+              100% { opacity: 1; } /* Slow fade-in over 0.8s */
+            }
+          .animate-vanish-blink {
+            animation: vanish-blink 2s ease-in-out infinite;
+          }
         `}
       </style>
 
@@ -236,74 +240,74 @@ const Index = () => {
 
       {/* About Section */}
       <section
-  id="about"
-  className="min-h-screen py-16 section-fade-in"
->
-  <div className="container mx-auto px-6">
-    <div className="grid lg:grid-cols-2 gap-16 items-start">
-      <div className="animate-slide-in-left">
-        <div className="font-mono text-primary mb-6 text-lg glow-text">
-          {portfolioData.about.command}
-        </div>
-        <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">
-          {portfolioData.about.title}
-        </h2>
-        <div className="space-y-6 text-lg leading-relaxed">
-          <p className="text-2xl md:text-3xl font-bold mb-8">
-            {portfolioData.about.name}
-          </p>
-          <p className="text-muted-foreground">
-            {portfolioData.about.description1}
-          </p>
-          <p className="text-muted-foreground">
-            {portfolioData.about.description2}
-          </p>
-          <div className="grid grid-cols-2 gap-6 mt-8">
-            {portfolioData.about.details.map((detail, index) => (
-              <div key={index}>
-                <div className="font-mono text-primary text-sm mb-2">
-                  {detail.label}
-                </div>
-                <div
-                  className={`font-semibold flex items-center ${
-                    detail.className || "text-foreground"
-                  } ${detail.label === "Status" ? "animate-vanish-blink" : ""}`}
-                >
-                  {detail.label === "Status" && (
-                    <span className="inline-block w-3 h-3 mr-2 bg-green-500 rounded-full glow-text"></span>
-                  )}
-                  <span>{detail.value}</span>
+        id="about"
+        className="min-h-screen py-16 section-fade-in"
+      >
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="animate-slide-in-left">
+              <div className="font-mono text-primary mb-6 text-lg glow-text">
+                {portfolioData.about.command}
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">
+                {portfolioData.about.title}
+              </h2>
+              <div className="space-y-6 text-lg leading-relaxed">
+                <p className="text-2xl md:text-3xl font-bold mb-8">
+                  {portfolioData.about.name}
+                </p>
+                <p className="text-muted-foreground">
+                  {portfolioData.about.description1}
+                </p>
+                <p className="text-muted-foreground">
+                  {portfolioData.about.description2}
+                </p>
+                <div className="grid grid-cols-2 gap-6 mt-8">
+                  {portfolioData.about.details.map((detail, index) => (
+                    <div key={index}>
+                      <div className="font-mono text-primary text-sm mb-2">
+                        {detail.label}
+                      </div>
+                      <div
+                        className={`font-semibold flex items-center ${
+                          detail.className || "text-foreground"
+                        } ${detail.label === "Status" ? "animate-vanish-blink" : ""}`}
+                      >
+                        {detail.label === "Status" && (
+                          <span className="inline-block w-3 h-3 mr-2 bg-green-500 rounded-full glow-text"></span>
+                        )}
+                        <span>{detail.value}</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="animate-slide-in-right">
-        <Card className="terminal-window glass-effect terminal-glow">
-          <div className="terminal-header">
-            <div className="flex gap-2">
-              <div className="terminal-button close"></div>
-              <div className="terminal-button minimize"></div>
-              <div className="terminal-button maximize"></div>
             </div>
-            <span className="text-sm text-muted-foreground ml-4 font-mono">
-              {portfolioData.about.terminal.title}
-            </span>
+            <div className="animate-slide-in-right">
+              <Card className="terminal-window glass-effect terminal-glow">
+                <div className="terminal-header">
+                  <div className="flex gap-2">
+                    <div className="terminal-button close"></div>
+                    <div className="terminal-button minimize"></div>
+                    <div className="terminal-button maximize"></div>
+                  </div>
+                  <span className="text-sm text-muted-foreground ml-4 font-mono">
+                    {portfolioData.about.terminal.title}
+                  </span>
+                </div>
+                <div className="p-6 font-mono text-sm space-y-3">
+                  {portfolioData.about.terminal.lines.map((line, index) => (
+                    <div key={index}>
+                      <div className="text-primary">{line.command}</div>
+                      <div className={line.outputClass}>{line.output}</div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
           </div>
-          <div className="p-6 font-mono text-sm space-y-3">
-            {portfolioData.about.terminal.lines.map((line, index) => (
-              <div key={index}>
-                <div className="text-primary">{line.command}</div>
-                <div className={line.outputClass}>{line.output}</div>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </div>
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* Skills Section */}
       <section
