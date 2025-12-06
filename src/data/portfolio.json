@@ -14,18 +14,18 @@
     "typingLines": [
       { "text": "Hello,", "className": "text-primary" },
       {
-        "text": "I'm a React Native Developer!!!",
+        "text": "I'm a React & React Native Developer!!!",
         "className": "text-foreground"
       }
     ],
-    "subtitle": "React Native developer focused on building smooth, cross-platform mobile apps with great user experiences.",
+    "subtitle": "React & React Native developer focused on building smooth, cross-platform mobile apps and web applications with great user experiences.",
     "ctaButton": "View Projects"
   },
   "about": {
     "command": "cat ~/about.txt",
     "title": "About Me",
     "name": "Samarth Bhinge",
-    "description1": "As a React Native developer, I specialize in crafting fast, reliable, and visually appealing mobile apps that run seamlessly on both iOS and Android.",
+    "description1": "As a React and React Native developer, I specialize in crafting fast, reliable, and visually appealing mobile apps and web applications that run seamlessly across platforms.",
     "description2": "When I'm not coding, you'll find me exploring new mobile frameworks, testing out UI patterns, or staying updated with the latest trends in cross-platform development.",
     "details": [
       { "label": "Experience", "value": "<1 Year" },
@@ -35,7 +35,7 @@
         "value": "Available",
         "className": "text-terminal-success"
       },
-      { "label": "Focus", "value": "React Native & Mobile Development" }
+      { "label": "Focus", "value": "React & React Native Development" }
     ],
     "terminal": {
       "title": "~/profile",
@@ -137,6 +137,30 @@
     "items": [
       {
         "folder": "project-01/",
+        "title": "HR Nexus",
+        "description": "An AI-powered HR management platform with intelligent document management, task tracking, and AI assistant. Features: Natural language queries for HR documents, AI-powered search with citations, multi-format document support (PDF, Word, Text), task management with priority levels, and multi-tenant organization support with role-based access.",
+        "tags": [
+          { "name": "Next.js", "class": "bg-primary/20 text-primary" },
+          { "name": "FastAPI", "class": "bg-teal-100 text-teal-800" },
+          { "name": "LangChain", "class": "bg-primary/20 text-primary" },
+          { "name": "Ollama", "class": "bg-teal-100 text-teal-800" },
+          { "name": "RAG", "class": "bg-primary/20 text-primary" }
+        ],
+        "buttons": [
+          {
+            "text": "GitHub",
+            "variant": "outline",
+            "link": "https://github.com/sammyZi/hr-nexus"
+          },
+          {
+            "text": "Live Demo",
+            "variant": "default",
+            "link": "https://hr-nexus-eosin.vercel.app/"
+          }
+        ]
+      },
+      {
+        "folder": "project-02/",
         "title": "Task Manager App",
         "description": "A simple and powerful Task Management App built with React Native and Firebase. Manage your daily tasks with ease — create, update, filter, and organize them based on priority and status.",
         "tags": [
@@ -155,7 +179,7 @@
         ]
       },
       {
-        "folder": "project-02/",
+        "folder": "project-03/",
         "title": "Student Attendance App",
         "description": "A React Native app to manage student attendance for sessions using student card numbers and date selection.",
         "tags": [
@@ -172,7 +196,7 @@
         ]
       },
       {
-        "folder": "project-03/",
+        "folder": "project-04/",
         "title": "Restate",
         "description": "This is a mobile application project for browsing and managing real estate listings, built with a modern and user-friendly interface.",
         "tags": [
