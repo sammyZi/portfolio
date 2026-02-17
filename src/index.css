@@ -1,119 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Terminal-themed design system with authentic Linux terminal colors */
-
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
 @layer base {
   :root {
-    /* Terminal Dark Theme */
-    --background: 220 13% 8%; /* Deep terminal background */
-    --foreground: 120 100% 85%; /* Bright terminal green */
-
-    --card: 220 13% 10%;
-    --card-foreground: 120 100% 85%;
-
-    --popover: 220 13% 10%;
-    --popover-foreground: 120 100% 85%;
-
-    --primary: 120 100% 75%; /* Terminal green */
-    --primary-foreground: 220 13% 8%;
-
-    --secondary: 220 13% 15%; /* Darker terminal surface */
-    --secondary-foreground: 120 100% 85%;
-
-    --muted: 220 13% 12%;
-    --muted-foreground: 120 50% 60%; /* Dimmed green */
-
-    --accent: 30 100% 60%;
-    --accent-foreground: 220 13% 8%;
-
-    --destructive: 0 75% 65%; /* Terminal red */
-    --destructive-foreground: 220 13% 8%;
-
-    --border: 120 30% 25%; /* Subtle green border */
-    --input: 220 13% 12%;
-    --ring: 120 100% 75%;
-
-    /* Terminal-specific colors */
-    --terminal-cursor: 120 100% 85%;
-    --terminal-prompt: 45 100% 70%; /* Amber prompt */
-    --terminal-command: 120 100% 85%; /* Green commands */
-    --terminal-output: 180 50% 75%; /* Cyan output */
-    --terminal-error: 0 75% 65%; /* Red errors */
-    --terminal-success: 120 100% 75%; /* Green success */
-    --terminal-warning: 45 100% 70%; /* Amber warnings */
+    /* Pac-Man Inspired Theme - Dark Mode Default */
     
-    /* Glow effects */
-    --terminal-glow: 120 100% 75%;
-    --cursor-glow: 0 0 10px hsl(var(--terminal-cursor));
-    --text-glow: 0 0 5px hsl(var(--terminal-glow));
+    /* Background: Deep dark purple (#140a1f) */
+    --background: 268 51% 8%;
 
-    --radius: 0.25rem; /* Sharper corners for terminal feel */
+    /* Foreground: White or very light peach for main text */
+    --foreground: 0 0% 100%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+    /* Cards: Soft peach (#ffb7a5) */
+    --card: 12 100% 82%;
+    --card-foreground: 268 51% 8%; /* Dark text on light cards */
 
-  .light {
-    /* Light Terminal Theme */
-    --background: 50 100% 98%; /* Light background */
-    --foreground: 220 13% 18%; /* Dark text for readability */
+    /* Popover: Same as card */
+    --popover: 12 100% 82%;
+    --popover-foreground: 268 51% 8%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 13% 18%;
+    /* Primary: Warm arcade orange (#ff8c42) */
+    --primary: 23 100% 63%;
+    --primary-foreground: 268 51% 8%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 18%;
+    /* Secondary: Lighter purple tone (#2a1540) */
+    --secondary: 268 50% 17%;
+    --secondary-foreground: 12 100% 82%;
 
-    --primary: 142 71% 45%; /* Dark green for light mode */
-    --primary-foreground: 0 0% 100%;
+    /* Muted: Even lighter purple or distinct tone (#3a1f5c) */
+    --muted: 267 49% 24%;
+    --muted-foreground: 12 100% 75%;
 
-    --secondary: 210 40% 95%; /* Light surface */
-    --secondary-foreground: 220 13% 18%;
+    /* Accent: Soft yellow (#ffd166) */
+    --accent: 41 100% 70%;
+    --accent-foreground: 268 51% 8%;
 
-    --muted: 210 40% 92%;
-    --muted-foreground: 220 13% 45%;
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    --accent: 45 93% 47%; /* Darker amber for light mode */
-    --accent-foreground: 0 0% 100%;
+    /* Border: Lighter purple for borders */
+    --border: 267 49% 24%;
+    --input: 267 49% 24%;
+    --ring: 23 100% 63%;
 
-    --destructive: 0 84% 50%; /* Red for light mode */
-    --destructive-foreground: 0 0% 100%;
+    --radius: 1rem; /* Softer, rounded corners */
 
-    --border: 220 13% 87%;
-    --input: 220 13% 91%;
-    --ring: 142 71% 45%;
-
-    /* Terminal colors for light mode */
-    --terminal-cursor: 220 13% 18%;
-    --terminal-prompt: 45 93% 47%;
-    --terminal-command: 142 71% 45%;
-    --terminal-output: 220 13% 30%;
-    --terminal-error: 0 84% 50%;
-    --terminal-success: 142 71% 45%;
-    --terminal-warning: 45 93% 47%;
-    
-    --terminal-glow: 142 71% 45%;
-    --cursor-glow: 0 0 10px hsl(var(--terminal-cursor));
-    --text-glow: 0 0 5px hsl(var(--terminal-glow));
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 268 51% 8%;
+    --sidebar-foreground: 12 100% 82%;
+    --sidebar-primary: 23 100% 63%;
+    --sidebar-primary-foreground: 268 51% 8%;
+    --sidebar-accent: 268 50% 17%;
+    --sidebar-accent-foreground: 12 100% 82%;
+    --sidebar-border: 267 49% 24%;
+    --sidebar-ring: 23 100% 63%;
   }
 }
 
@@ -121,238 +64,62 @@
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground font-sans;
-    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-background text-foreground font-body antialiased;
   }
-
-  .font-mono {
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-wide;
   }
 }
 
 @layer components {
-  /* Terminal-specific components */
-  .terminal-window {
-    @apply bg-background border border-border rounded-sm shadow-2xl;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  /* Arcade Maze Background */
+  .bg-maze {
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(hsl(var(--muted) / 0.2) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--muted) / 0.2) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
-  
-  .terminal-header {
-    @apply bg-secondary border-b border-border p-2 flex items-center gap-2;
+
+  /* Peach Card Style */
+  .arcade-card {
+    @apply bg-card text-card-foreground rounded-2xl shadow-lg border-b-4 border-r-4 border-primary transition-all duration-300;
   }
-  
-  .terminal-button {
-    @apply w-3 h-3 rounded-full;
+
+  .arcade-card:hover {
+    @apply transform -translate-y-2 shadow-2xl border-accent;
   }
-  
-  .terminal-button.close {
-    @apply bg-destructive;
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
   }
-  
-  .terminal-button.minimize {
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
     @apply bg-accent;
   }
-  
-  .terminal-button.maximize {
-    @apply bg-primary;
+
+  /* Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
-  
-  .terminal-content {
-    @apply p-4 overflow-auto;
-    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
-  
-  .terminal-line {
-    @apply flex items-start gap-2 mb-1;
-  }
-  
-  .terminal-prompt {
-    @apply text-accent font-semibold;
-    color: hsl(var(--terminal-prompt));
-  }
-  
-  .terminal-command {
-    @apply text-primary;
-    color: hsl(var(--terminal-command));
-  }
-  
-  .terminal-output {
-    @apply text-foreground;
-    color: hsl(var(--terminal-output));
-  }
-  
-  .terminal-error {
-    color: hsl(var(--terminal-error));
-  }
-  
-  .terminal-success {
-    color: hsl(var(--terminal-success));
-  }
-  
-  .terminal-warning {
-    color: hsl(var(--terminal-warning));
-  }
-  
-  .cursor {
-    @apply inline-block w-2 h-5 ml-1 align-middle;
-    background-color: hsl(var(--terminal-cursor));
-    box-shadow: var(--cursor-glow);
-    animation: blink 0.7s step-end infinite;
-  }
-  
+
   .glow-text {
-    text-shadow: var(--text-glow);
-  }
-  
-  .typing-animation {
-    animation: typing 1s steps(40, end);
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
   }
 
-  .hover-scale {
-    @apply transition-all duration-300 hover:scale-105;
+  .glow-box {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
   }
-
-  .animate-fade-in {
-    opacity: 1; /* Ensure text remains visible */
-    transform: translateY(0); /* Remove any transform */
-  }
-
-  .animate-slide-up {
-    animation: slide-up 0.8s ease-out forwards;
-  }
-
-  .animate-slide-in-left {
-    animation: slide-in-left 0.8s ease-out forwards;
-  }
-
-  .animate-slide-in-right {
-    animation: slide-in-right 0.8s ease-out forwards;
-  }
-
-  .section-fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-  }
-
-  .section-fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .terminal-glow {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.3);
-  }
-
-  /* Enhanced Button Styles */
-  .gradient-button {
-    @apply bg-gradient-to-r from-primary via-accent to-primary-glow text-background font-semibold;
-    background-size: 200% 100%;
-    animation: gradient-shift 3s ease infinite;
-    box-shadow: 0 4px 15px hsl(var(--primary) / 0.4);
-  }
-
-  .gradient-button:hover {
-    @apply shadow-2xl;
-    box-shadow: 0 8px 25px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.3);
-    transform: translateY(-2px) scale(1.05);
-  }
-
-  .outline-button {
-    @apply border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-accent;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .outline-button:hover {
-    @apply shadow-lg;
-    box-shadow: 0 0 20px hsl(var(--accent) / 0.4);
-    border-color: hsl(var(--accent));
-  }
-
-  .skill-card {
-    @apply hover:bg-gradient-to-br hover:from-primary/10 hover:to-accent/10;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .skill-card:hover {
-    @apply shadow-xl;
-    box-shadow: 0 10px 30px hsl(var(--primary) / 0.2);
-  }
-
-  .project-card {
-    @apply hover:bg-gradient-to-br hover:from-accent/10 hover:to-primary/10;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .project-card:hover {
-    @apply shadow-xl;
-    box-shadow: 0 15px 35px hsl(var(--accent) / 0.3);
-  }
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-up {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-in-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-in-right {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
 }
