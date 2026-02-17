@@ -1,346 +1,308 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import Typewriter from "typewriter-effect";
 import portfolioData from "@/data/portfolio.json";
+import { Ghost, Gamepad2, Code, Terminal, Send, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
+
+const PacManGhost = ({ color, className }: { color: string; className?: string }) => (
+  <svg
+    viewBox="0 0 200 200"
+    className={`w-full h-full ${className}`}
+    fill={color}
+  >
+    <path d="M100,20C55.8,20,20,55.8,20,100v80l26.7-26.7L73.3,180L100,153.3L126.7,180l26.7-26.7L180,180V100 C180,55.8,144.2,20,100,20z M70,80c-8.3,0-15-6.7-15-15s6.7-15,15-15s15,6.7,15,15S78.3,80,70,80z M130,80c-8.3,0-15-6.7-15-15 s6.7-15,15-15s15,6.7,15,15S138.3,80,130,80z" />
+  </svg>
+);
+
+const PacMan = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" className={className}>
+    <circle cx="50" cy="50" r="50" fill="#ffd166" />
+    <polygon points="50,50 100,20 100,80" fill="#140a1f">
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0 50 50"
+        to="30 50 50"
+        dur="0.2s"
+        repeatCount="indefinite"
+        values="0 50 50; 30 50 50; 0 50 50; -30 50 50; 0 50 50"
+        keyTimes="0; 0.25; 0.5; 0.75; 1"
+      />
+    </polygon>
+  </svg>
+);
+
+const SectionDivider = () => (
+  <div className="flex justify-center items-center gap-4 py-12 overflow-hidden">
+    {[...Array(20)].map((_, i) => (
+      <div key={i} className="w-3 h-3 bg-accent rounded-sm animate-pulse" style={{ animationDelay: `${i * 0.1}s` }} />
+    ))}
+  </div>
+);
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState("home");
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
           }
         });
       },
-      // Start the animation when the element is 15% visible
-      { threshold: 0.15 }
+      { threshold: 0.2 }
     );
-    
-    // The observer now looks for any element with the 'animate-on-scroll' class
-    const elements = document.querySelectorAll(".animate-on-scroll");
-    elements.forEach((el) => observer.observe(el));
+
+    document.querySelectorAll("section").forEach((section) => {
+      observer.observe(section);
+    });
 
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <style>
-        {`
-          @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
-          html {
-            scroll-padding-top: 64px; /* Adjust to match header height */
-            scroll-behavior: smooth;
-          }
-
-          /* --- NEW ANIMATION STYLES START --- */
-          
-          /* Base class for all scroll animations */
-          .animate-on-scroll {
-            opacity: 0;
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-          }
-
-          /* Fade Up Animation */
-          .animate-fade-up {
-             transform: translateY(30px);
-          }
-
-          /* Side Fade In (Left) */
-          .animate-fade-in-left {
-            transform: translateX(-30px);
-          }
-          
-          /* Side Fade In (Right) */
-          .animate-fade-in-right {
-            transform: translateX(30px);
-          }
-          
-          /* When visible, reset transform and fade in */
-          .animate-on-scroll.visible {
-            opacity: 1;
-            transform: none; /* Can be translateX(0) or translateY(0) or none */
-          }
-          
-          /* --- NEW ANIMATION STYLES END --- */
-
-          .hover-scale {
-            transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-          }
-
-          .hover-scale:hover {
-            transform: translateY(-6px);
-            opacity: 0.95;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          }
-
-          .terminal-button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            transition: transform 0.2s ease;
-          }
-
-          .terminal-button:hover {
-            transform: scale(1.2);
-          }
-
-          .animate-bounce {
-            animation: bounce 2s infinite ease-in-out;
-          }
-
-          @keyframes bounce {
-            0%, 100% { transform: translate(-50%, 0); }
-            50% { transform: translate(-50%, -10px); }
-          }
-            @keyframes vanish-blink {
-              0% { opacity: 1; }
-              15% { opacity: 0; }
-              60% { opacity: 0; }
-              100% { opacity: 1; }
-            }
-          .animate-vanish-blink {
-            animation: vanish-blink 2s ease-in-out infinite;
-          }
-        `}
-      </style>
+    <div className="min-h-screen bg-background text-foreground font-body bg-maze relative selection:bg-accent selection:text-accent-foreground">
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-30 glass-effect">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="text-primary font-mono font-bold text-xl glow-text">
-              {portfolioData.navigation.brand}
-            </div>
-            <div className="hidden md:flex gap-8">
-              {portfolioData.navigation.links.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-primary transition-all duration-300 font-medium"
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
+      <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b-4 border-primary">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <a href="#home" className="text-2xl font-heading font-bold text-accent tracking-widest hover:scale-105 transition-transform">
+            &lt;{portfolioData.navigation.brand} /&gt;
+          </a>
+          
+          <div className="hidden md:flex gap-8 items-center">
+            {portfolioData.navigation.links.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`font-heading text-sm uppercase tracking-wider transition-colors hover:text-primary ${
+                  activeSection === link.href.substring(1) ? "text-primary border-b-2 border-primary" : "text-muted-foreground"
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
             <ThemeToggle />
+          </div>
+          
+          <div className="md:hidden">
+             <ThemeToggle />
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section
-        id="home"
-        className="min-h-screen flex items-center justify-center relative"
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10"></div>
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="font-mono text-primary glow-text mb-6 text-lg min-h-[30px] sm:min-h-[36px] md:min-h-[40px]">
-              <span className="inline-block">
-                {portfolioData.hero.greeting}
-              </span>
-            </div>
-            <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold mb-8 min-h-[120px] sm:min-h-[140px] md:min-h-[180px] flex flex-col justify-start"
-            >
-              {portfolioData.hero.typingLines.map((line, index) => (
-                <div
-                  key={index}
-                  className={index === 0 ? "mb-2 sm:mb-3 md:mb-4" : ""}
-                >
-                  <span className={line.className}>
-                    {index === 1 ? (
-                      <div className="min-h-[60px] sm:min-h-[80px] md:min-h-[100px] flex items-start">
-                        <Typewriter
-                          options={{
-                            strings: [line.text],
-                            autoStart: true,
-                            loop: false,
-                            delay: 80,
-                            deleteSpeed: Infinity,
-                            cursor: "|",
-                          }}
-                        />
-                      </div>
-                    ) : (
-                      line.text
-                    )}
-                  </span>
-                </div>
-              ))}
-            </h1>
-            <p
-              className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
-            >
-              {portfolioData.hero.subtitle}
-            </p>
-            <div
-              className="flex flex-col sm:flex-row gap-6 justify-center"
-            >
-              <Button
-                asChild
-                className="gradient-button px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 rounded-xl"
-                size="lg"
-              >
-                <a href="#about">About Me</a>
-              </Button>
-              <Button
-                variant="outline"
-                asChild
-                className="outline-button px-8 py-4 text-lg font-medium hover:scale-105 transition-all duration-300 rounded-xl"
-                size="lg"
-              >
-                <a href="#projects">{portfolioData.hero.ctaButton}</a>
-              </Button>
-            </div>
-          </div>
+      <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20">
+            {/* Animated background elements could go here */}
         </div>
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
+
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <div className="mb-6 inline-block animate-bounce">
+             <span className="bg-accent text-accent-foreground px-4 py-2 rounded-full font-heading font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(255,209,102,0.6)]">
+               Ready Player One
+             </span>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-foreground tracking-tight">
+             <span className="text-primary block mb-2">Hello, World!</span>
+             I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">{portfolioData.about.name}</span>
+          </h1>
+
+          <div className="text-xl md:text-3xl font-mono text-muted-foreground mb-12 h-[60px]">
+            <Typewriter
+              options={{
+                strings: portfolioData.hero.typingLines.map(l => l.text),
+                autoStart: true,
+                loop: true,
+                delay: 50,
+                deleteSpeed: 30,
+              }}
+            />
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-2xl shadow-[4px_4px_0px_0px_rgba(255,209,102,1)] hover:shadow-[2px_2px_0px_0px_rgba(255,209,102,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all" asChild>
+              <a href="#projects">
+                 Start Game
+              </a>
+            </Button>
+            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-2xl" asChild>
+              <a href="#contact">
+                 Insert Coin
+              </a>
+            </Button>
+          </div>
+
+          {/* Pacman Animation */}
+          <div className="absolute bottom-10 left-0 w-full overflow-hidden h-20 pointer-events-none">
+             <div className="absolute animate-[slide-in-right_10s_linear_infinite] flex items-center gap-10 left-full">
+                <PacMan className="w-12 h-12 text-accent" />
+                <div className="flex gap-4">
+                  <div className="w-3 h-3 bg-accent rounded-full" />
+                  <div className="w-3 h-3 bg-accent rounded-full" />
+                  <div className="w-3 h-3 bg-accent rounded-full" />
+                </div>
+                <Ghost className="w-12 h-12 text-red-500 animate-bounce" />
+                <Ghost className="w-12 h-12 text-pink-500 animate-bounce delay-100" />
+                <Ghost className="w-12 h-12 text-cyan-500 animate-bounce delay-200" />
+                <Ghost className="w-12 h-12 text-orange-500 animate-bounce delay-300" />
+             </div>
           </div>
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* About Section */}
-      <section
-        id="about"
-        className="min-h-screen py-16 animate-on-scroll animate-fade-up"
-      >
+      <section id="about" className="py-20 relative">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <div className="font-mono text-primary mb-6 text-lg glow-text">
-                {portfolioData.about.command}
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">
-                {portfolioData.about.title}
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="lg:w-1/2">
+               <div className="bg-card text-card-foreground p-8 rounded-3xl shadow-[8px_8px_0px_0px_rgba(255,140,66,1)] border-4 border-primary relative overflow-hidden group hover:translate-y-[-5px] transition-transform duration-300">
+                  <div className="absolute top-0 left-0 w-full h-2 bg-primary/20"></div>
+                  <div className="flex items-center gap-3 mb-6 border-b-2 border-primary/20 pb-4">
+                    <div className="w-4 h-4 rounded-full bg-red-500" />
+                    <div className="w-4 h-4 rounded-full bg-yellow-500" />
+                    <div className="w-4 h-4 rounded-full bg-green-500" />
+                    <h2 className="ml-auto font-heading font-bold text-xl uppercase text-primary tracking-widest">Player 1 Info</h2>
+                  </div>
+
+                  <p className="text-lg mb-6 leading-relaxed font-medium">
+                    {portfolioData.about.description1}
+                  </p>
+                  <p className="text-lg mb-8 leading-relaxed font-medium opacity-90">
+                    {portfolioData.about.description2}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    {portfolioData.about.details.map((detail, idx) => (
+                      <div key={idx} className="bg-background/10 p-4 rounded-xl backdrop-blur-sm">
+                        <span className="block text-primary font-mono text-sm uppercase mb-1">{detail.label}</span>
+                        <span className="font-heading font-bold text-lg">{detail.value}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <PacManGhost color="#3a1f5c" className="absolute -bottom-10 -right-10 w-40 h-40 opacity-10 rotate-12 group-hover:rotate-0 transition-transform duration-500" />
+               </div>
+            </div>
+
+            <div className="lg:w-1/2 text-center lg:text-left">
+              <h2 className="text-4xl md:text-6xl font-heading font-bold mb-8 text-accent">
+                Level 1: <br/> <span className="text-foreground">The Developer</span>
               </h2>
-              <div className="space-y-6 text-lg leading-relaxed">
-                <p className="text-2xl md:text-3xl font-bold mb-8">
-                  {portfolioData.about.name}
+              <div className="space-y-6">
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  Passionate about creating intuitive and dynamic user experiences.
+                  Just like Pac-Man clearing the maze, I love solving complex problems
+                  and optimizing performance.
                 </p>
-                <p className="text-muted-foreground">
-                  {portfolioData.about.description1}
-                </p>
-                <p className="text-muted-foreground">
-                  {portfolioData.about.description2}
-                </p>
-                <div className="grid grid-cols-2 gap-6 mt-8">
-                  {portfolioData.about.details.map((detail, index) => (
-                    <div key={index}>
-                      <div className="font-mono text-primary text-sm mb-2">
-                        {detail.label}
-                      </div>
-                      <div
-                        className={`font-semibold flex items-center ${
-                          detail.className || "text-foreground"
-                        } ${detail.label === "Status" ? "animate-vanish-blink" : ""}`}
-                      >
-                        {detail.label === "Status" && (
-                          <span className="inline-block w-3 h-3 mr-2 bg-green-500 rounded-full glow-text"></span>
-                        )}
-                        <span>{detail.value}</span>
-                      </div>
-                    </div>
-                  ))}
+                <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                  <div className="px-6 py-3 rounded-full bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
+                    <Code size={20} /> Clean Code
+                  </div>
+                  <div className="px-6 py-3 rounded-full bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
+                    <Terminal size={20} /> Performance
+                  </div>
+                  <div className="px-6 py-3 rounded-full bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
+                    <Gamepad2 size={20} /> UX Design
+                  </div>
                 </div>
               </div>
             </div>
-            <div>
-              <Card className="terminal-window glass-effect terminal-glow">
-                <div className="terminal-header">
-                  <div className="flex gap-2">
-                    <div className="terminal-button close"></div>
-                    <div className="terminal-button minimize"></div>
-                    <div className="terminal-button maximize"></div>
-                  </div>
-                  <span className="text-sm text-muted-foreground ml-4 font-mono">
-                    {portfolioData.about.terminal.title}
-                  </span>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* Skills Section */}
+      <section id="skills" className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-heading font-bold text-accent mb-4">Power Ups</h2>
+            <p className="text-xl text-muted-foreground font-mono">Select your weapon</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {portfolioData.skills.categories.map((category, idx) => (
+              <Card key={idx} className="bg-secondary border-none p-6 rounded-3xl relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,140,66,0.3)] transition-all duration-300">
+                <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity">
+                  <Gamepad2 size={60} className="text-primary" />
                 </div>
-                <div className="p-6 font-mono text-sm space-y-3">
-                  {portfolioData.about.terminal.lines.map((line, index) => (
-                    <div key={index}>
-                      <div className="text-primary">{line.command}</div>
-                      <div className={line.outputClass}>{line.output}</div>
+
+                <h3 className="text-2xl font-heading font-bold text-primary mb-2 relative z-10">{category.title}</h3>
+                <p className="text-muted-foreground mb-6 relative z-10 text-sm">{category.description}</p>
+
+                <div className="grid grid-cols-2 gap-4 relative z-10">
+                  {category.items.map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 bg-background/30 p-3 rounded-xl hover:bg-primary/20 transition-colors">
+                      <img src={item.icon} alt={item.name} className="w-6 h-6" />
+                      <span className="font-heading font-semibold text-sm text-foreground">{item.name}</span>
                     </div>
                   ))}
                 </div>
               </Card>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section
-        id="skills"
-        className="min-h-screen flex items-center"
-      >
+      <SectionDivider />
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16 animate-on-scroll animate-fade-up">
-            <div className="font-mono text-primary mb-6 text-lg glow-text">
-              {portfolioData.skills.command}
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">
-              {portfolioData.skills.title}
-            </h2>
-            <p
-              className="text-xl text-muted-foreground max-w-2xl mx-auto"
-              style={{ animationDelay: "0.2s" }}
-            >
-              {portfolioData.skills.subtitle}
-            </p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-heading font-bold text-accent mb-4">High Scores</h2>
+            <p className="text-xl text-muted-foreground font-mono">Recent missions completed</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {portfolioData.skills.categories.map((category, index) => (
-              <Card
-                key={category.title}
-                className="terminal-window glass-effect hover-scale animate-on-scroll animate-fade-up"
-                style={{ transitionDelay: `${index * 150}ms` }}
-              >
-                <div className="terminal-header">
-                  <div className="flex gap-2">
-                    <div className="terminal-button close bg-red-500"></div>
-                    <div className="terminal-button minimize bg-yellow-500"></div>
-                    <div className="terminal-button maximize bg-green-500"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {portfolioData.projects.items.map((project, idx) => (
+              <Card key={idx} className="bg-card text-card-foreground border-4 border-muted p-8 rounded-3xl shadow-lg hover:shadow-[8px_8px_0px_0px_rgba(20,10,31,0.5)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
+                <div className="flex justify-between items-start mb-6">
+                  <h3 className="text-3xl font-heading font-bold text-primary-foreground">{project.title}</h3>
+                  <div className="bg-primary-foreground/10 p-2 rounded-lg">
+                    <ExternalLink className="text-primary-foreground" size={24} />
                   </div>
-                  <span className="text-sm text-muted-foreground ml-4 font-mono">
-                    {category.folder}
-                  </span>
                 </div>
-                <div className="p-6">
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold text-primary mb-2">
-                      {category.title}
-                    </h3>
-                    <p
-                      className="text-muted-foreground text-sm"
-                    >
-                      {category.description}
-                    </p>
+
+                <p className="text-lg font-medium opacity-80 mb-8 flex-grow leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="space-y-6 mt-auto">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tIdx) => (
+                      <span key={tIdx} className="px-3 py-1 bg-white/20 rounded-full text-sm font-bold font-mono text-primary-foreground">
+                        #{tag.name}
+                      </span>
+                    ))}
                   </div>
-                  <div className="space-y-3 font-mono text-sm">
-                    {category.items.map((item, itemIndex) => (
-                      <div
-                        key={item.name}
-                        className="flex items-center gap-2"
+
+                  <div className="flex gap-4 pt-4 border-t border-primary-foreground/10">
+                    {project.buttons.map((btn, bIdx) => (
+                      <Button
+                        key={bIdx}
+                        asChild
+                        variant={btn.variant === "outline" ? "outline" : "default"}
+                        className={`font-heading font-bold rounded-xl ${
+                          btn.variant === "outline"
+                            ? "bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-card"
+                            : "bg-primary-foreground text-card hover:bg-primary-foreground/90"
+                        }`}
                       >
-                        <img
-                          src={item.icon}
-                          alt={item.name}
-                          className="w-5 h-5"
-                        />
-                        <span className="text-foreground">{item.name}</span>
-                      </div>
+                        <a href={btn.link} target="_blank" rel="noopener noreferrer">
+                          {btn.text}
+                        </a>
+                      </Button>
                     ))}
                   </div>
                 </div>
@@ -350,193 +312,54 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section
-        id="projects"
-        className="min-h-screen py-16"
-      >
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16 animate-on-scroll animate-fade-up">
-            <div className="font-mono text-primary mb-6 text-lg glow-text">
-              {portfolioData.projects.command}
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">
-              {portfolioData.projects.title}
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {portfolioData.projects.subtitle}
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {portfolioData.projects.items.map((project, index) => (
-              <Card
-                key={index}
-                className={`terminal-window glass-effect project-card group flex flex-col min-h-[370px] animate-on-scroll ${
-                  index % 2 === 0 ? 'animate-fade-in-right' : 'animate-fade-in-left'
-                }`}
-                style={{ transitionDelay: `${(index % 2) * 150}ms` }}
-              >
-                <div className="terminal-header">
-                  <div className="flex gap-2">
-                    <div className="terminal-button close"></div>
-                    <div className="terminal-button minimize"></div>
-                    <div className="terminal-button maximize"></div>
-                  </div>
-                  <span className="text-sm text-muted-foreground ml-4 font-mono">
-                    {project.folder}
-                  </span>
-                </div>
-
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-primary mb-3">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="mt-auto">
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tags.map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className={`${tag.class} px-3 py-1 rounded-full text-sm font-mono`}
-                        >
-                          {tag.name}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-4">
-                      {project.buttons.map((button, buttonIndex) => (
-                        <Button
-                          key={buttonIndex}
-                          asChild
-                          variant={button.variant}
-                          size="sm"
-                          className="font-mono rounded-xl"
-                        >
-                          <a
-                            href={button.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {button.text}
-                          </a>
-                        </Button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SectionDivider />
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="min-h-screen flex items-center animate-on-scroll animate-fade-up"
-      >
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="font-mono text-primary mb-6 text-lg glow-text">
-              {portfolioData.contact.command}
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">
-              {portfolioData.contact.title}
-            </h2>
-            <p className="text-xl text-muted-foreground mb-16 max-w-2xl mx-auto">
-              {portfolioData.contact.subtitle}
-            </p>
+      <section id="contact" className="py-20 mb-20">
+        <div className="container mx-auto px-6 max-w-4xl text-center">
+           <div className="bg-secondary border-4 border-accent p-12 rounded-[3rem] relative overflow-hidden">
+              <div className="absolute inset-0 bg-maze opacity-10"></div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-              <Card className="terminal-window glass-effect">
-                <div className="terminal-header">
-                  <div className="flex gap-2">
-                    <div className="terminal-button close"></div>
-                    <div className="terminal-button minimize"></div>
-                    <div className="terminal-button maximize"></div>
-                  </div>
-                  <span className="text-sm text-muted-foreground ml-4 font-mono">
-                    {portfolioData.contact.info.title}
-                  </span>
-                </div>
-                <div className="p-6 space-y-4">
-                  {portfolioData.contact.info.details.map((detail, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-3 font-mono text-sm"
+              <h2 className="text-4xl md:text-6xl font-heading font-bold text-accent mb-8 relative z-10">
+                Game Over?
+              </h2>
+              <p className="text-2xl text-foreground mb-12 font-medium relative z-10">
+                Don't let the game end here. <br/> Insert coin to continue...
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-6 relative z-10">
+                <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground font-heading font-bold text-xl px-10 py-8 rounded-full shadow-lg transition-transform hover:scale-105" asChild>
+                  <a href={portfolioData.contact.ctaLink}>
+                    <Mail className="mr-3" /> Contact Me
+                  </a>
+                </Button>
+
+                <div className="flex gap-4">
+                  {portfolioData.contact.info.details.filter(d => d.href.includes('github') || d.href.includes('linkedin')).map((social, idx) => (
+                    <a
+                      key={idx}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-full border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:rotate-12"
                     >
-                      <span className="text-primary">{detail.label}</span>
-                      <a
-                        href={detail.href}
-                        target="_blank"
-                        className="text-muted-foreground hover:underline transition-colors"
-                      >
-                        {detail.value}
-                      </a>
-                    </div>
+                      {social.href.includes('github') ? <Github size={32} /> : <Linkedin size={32} />}
+                    </a>
                   ))}
                 </div>
-              </Card>
-
-              <Card className="terminal-window glass-effect">
-                <div className="terminal-header">
-                  <div className="flex gap-2">
-                    <div className="terminal-button close"></div>
-                    <div className="terminal-button minimize"></div>
-                    <div className="terminal-button maximize"></div>
-                  </div>
-                  <span className="text-sm text-muted-foreground ml-4 font-mono">
-                    {portfolioData.contact.availability.title}
-                  </span>
-                </div>
-                <div className="p-6 space-y-4 font-mono text-sm">
-                  <div className="text-primary">
-                    {portfolioData.contact.availability.command}
-                  </div>
-                  {portfolioData.contact.availability.lines.map(
-                    (line, index) => (
-                      <div key={index} className="text-terminal-success">
-                        {line}
-                      </div>
-                    )
-                  )}
-                  <div className="text-muted-foreground mt-4">
-                    <span className="text-terminal-success">
-                      {portfolioData.contact.availability.responseTime}
-                    </span>
-                  </div>
-                </div>
-              </Card>
-            </div>
-
-            <div className="mt-12">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/80 rounded-xl text-primary-foreground px-8 py-4 text-lg font-medium hover:scale-105 transition-all duration-300"
-                asChild
-              >
-                <a href={portfolioData.contact.ctaLink}>
-                  {portfolioData.contact.ctaButton}
-                </a>
-              </Button>
-            </div>
-          </div>
+              </div>
+           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border/50 py-8">
-        <div className="container mx-auto px-6 text-center">
-          <div className="font-mono text-primary mb-2 text-sm">
-            {portfolioData.footer.prompt}
-          </div>
-          <p className="text-muted-foreground text-sm">
-            Built with React + TypeScript • Styled with Tailwind CSS
+      <footer className="bg-muted py-8 text-center relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <p className="font-mono text-muted-foreground">
+             © {new Date().getFullYear()} {portfolioData.about.name} • Insert Coin to Play Again
           </p>
         </div>
+        <div className="absolute bottom-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-50"></div>
       </footer>
     </div>
   );
