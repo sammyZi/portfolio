@@ -19,8 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'mono': ['JetBrains Mono', 'Fira Code', 'monospace'],
-				'sans': ['Inter', 'system-ui', 'sans-serif'],
+				'heading': ['"Space Grotesk"', '"Orbitron"', '"Exo 2"', 'sans-serif'],
+				'body': ['"Poppins"', 'sans-serif'],
+				'mono': ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
+				'sans': ['"Poppins"', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -31,7 +33,6 @@ export default {
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
-					glow: '120 100% 85%'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -57,14 +58,12 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				terminal: {
-					cursor: 'hsl(var(--terminal-cursor))',
-					prompt: 'hsl(var(--terminal-prompt))',
-					command: 'hsl(var(--terminal-command))',
-					output: 'hsl(var(--terminal-output))',
-					error: 'hsl(var(--terminal-error))',
-					success: 'hsl(var(--terminal-success))',
-					warning: 'hsl(var(--terminal-warning))',
+				arcade: {
+					yellow: '#ffd166',
+					orange: '#ff8c42',
+					peach: '#ffb7a5',
+					purple: '#3a1f5c',
+					dark: '#140a1f'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -98,11 +97,31 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'chomp': {
+					'0%, 100%': { transform: 'rotate(0deg)' },
+					'50%': { transform: 'rotate(45deg)' }
+				},
+				'chomp-bottom': {
+					'0%, 100%': { transform: 'rotate(0deg)' },
+					'50%': { transform: 'rotate(-45deg)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'blink': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'chomp': 'chomp 0.3s linear infinite',
+				'chomp-bottom': 'chomp-bottom 0.3s linear infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'blink': 'blink 1s steps(2) infinite'
 			}
 		}
 	},
