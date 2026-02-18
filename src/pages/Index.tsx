@@ -15,8 +15,8 @@ const PacManGhost = ({ color, className }: { color: string; className?: string }
   </svg>
 );
 
-const PacMan = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" className={className}>
+const PacMan = ({ className, rotation = 0 }: { className?: string; rotation?: number }) => (
+  <svg viewBox="0 0 100 100" className={className} style={{ transform: `rotate(${rotation}deg)` }}>
     <circle cx="50" cy="50" r="50" fill="#ffd166" />
     <polygon points="50,50 100,20 100,80" fill="#140a1f">
       <animateTransform
@@ -65,7 +65,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-body bg-maze relative selection:bg-accent selection:text-accent-foreground">
+    <div className="min-h-screen bg-background text-foreground font-body bg-maze relative selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b-4 border-primary">
@@ -95,8 +95,40 @@ const Index = () => {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-20">
-            {/* Animated background elements could go here */}
+
+        {/* Animated Background Pac-Man Elements */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            {/* Top Row: Left to Right */}
+            <div className="absolute top-[10%] left-[-10%] animate-slide-in-right opacity-10 flex items-center gap-6">
+                <PacMan className="w-16 h-16 text-accent" />
+                <div className="flex gap-4">
+                  <div className="w-3 h-3 bg-accent rounded-sm" />
+                  <div className="w-3 h-3 bg-accent rounded-sm" />
+                  <div className="w-3 h-3 bg-accent rounded-sm" />
+                </div>
+            </div>
+
+             {/* Bottom Row: Right to Left */}
+             <div className="absolute bottom-[20%] right-[-10%] animate-slide-in-left opacity-10 flex items-center gap-6">
+                 <PacMan className="w-12 h-12 text-accent" rotation={180} />
+                 <Ghost className="w-10 h-10 text-red-500 animate-bounce" />
+                 <Ghost className="w-10 h-10 text-pink-500 animate-bounce delay-100" />
+            </div>
+
+             {/* Left Column: Top to Bottom */}
+             <div className="absolute left-[5%] top-[-10%] animate-slide-in-top opacity-5 flex flex-col items-center gap-6">
+                 <PacMan className="w-10 h-10 text-accent" rotation={90} />
+                 <div className="flex flex-col gap-4">
+                    <div className="w-2 h-2 bg-accent rounded-sm" />
+                    <div className="w-2 h-2 bg-accent rounded-sm" />
+                 </div>
+            </div>
+
+            {/* Right Column: Bottom to Top */}
+            <div className="absolute right-[5%] bottom-[-10%] animate-slide-in-bottom opacity-5 flex flex-col items-center gap-6">
+                 <PacMan className="w-14 h-14 text-accent" rotation={270} />
+                 <Ghost className="w-12 h-12 text-cyan-500 animate-bounce" />
+            </div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
@@ -134,22 +166,6 @@ const Index = () => {
                  Contact Me
               </a>
             </Button>
-          </div>
-
-          {/* Pacman Animation */}
-          <div className="absolute bottom-10 left-0 w-full overflow-hidden h-20 pointer-events-none">
-             <div className="absolute animate-slide-in-right opacity-30 flex items-center gap-10 left-full">
-                <PacMan className="w-12 h-12 text-accent" />
-                <div className="flex gap-4">
-                  <div className="w-3 h-3 bg-accent rounded-sm" />
-                  <div className="w-3 h-3 bg-accent rounded-sm" />
-                  <div className="w-3 h-3 bg-accent rounded-sm" />
-                </div>
-                <Ghost className="w-12 h-12 text-red-500 animate-bounce" />
-                <Ghost className="w-12 h-12 text-pink-500 animate-bounce delay-100" />
-                <Ghost className="w-12 h-12 text-cyan-500 animate-bounce delay-200" />
-                <Ghost className="w-12 h-12 text-orange-500 animate-bounce delay-300" />
-             </div>
           </div>
         </div>
       </section>
@@ -266,9 +282,6 @@ const Index = () => {
               <Card key={idx} className="bg-card text-card-foreground border-4 border-muted p-8 rounded-sm shadow-none flex flex-col h-full">
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-3xl font-heading font-bold text-primary-foreground">{project.title}</h3>
-                  <div className="bg-primary-foreground/10 p-2 rounded-sm">
-                    <ExternalLink className="text-primary-foreground" size={24} />
-                  </div>
                 </div>
 
                 <p className="text-lg font-medium opacity-80 mb-8 flex-grow leading-relaxed">
