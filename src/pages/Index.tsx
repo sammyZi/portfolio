@@ -65,7 +65,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-body bg-maze relative selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-white retro-text-shadow font-body bg-maze relative selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b-4 border-primary">
@@ -94,7 +94,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex flex-col items-center justify-center pt-20 relative overflow-hidden arcade-track-bg">
+      <section id="home" className="min-h-screen flex flex-col items-center justify-center pt-20 relative overflow-hidden arcade-dots-bg">
 
         {/* Game UI - Top Bar */}
         <div className="absolute top-24 left-0 w-full px-6 flex justify-between font-heading text-xl text-white z-20 pointer-events-none">
@@ -112,49 +112,38 @@ const Index = () => {
             </div>
         </div>
 
-        {/* Realistic Pac-Man Chase Animation */}
-        <div className="absolute inset-0 z-0 pointer-events-none flex justify-center items-center opacity-70">
-            {/* Using a container aligned with the grid */}
-            <div className="relative w-[360px] h-[360px] lg:w-[600px] lg:h-[600px]">
-                {/* Pac-Man */}
-                <div className="absolute left-0 top-0 animate-maze-chase">
-                     <PacMan className="w-16 h-16 lg:w-24 lg:h-24 text-accent drop-shadow-[0_0_10px_rgba(255,209,102,0.8)]" />
-                </div>
+        {/* Realistic Pac-Man Horizontal Chase - Perfectly Aligned */}
+        <div className="absolute top-[30%] lg:top-[35%] w-full h-20 z-0 pointer-events-none overflow-hidden flex items-center">
+             <div className="animate-slide-in-right opacity-90 absolute flex items-center w-full" style={{ animationDuration: '15s', animationTimingFunction: 'linear' }}>
+                {/* Pac-Man (Size matches grid ~40px) */}
+                <PacMan className="w-10 h-10 lg:w-12 lg:h-12 text-accent drop-shadow-[0_0_5px_rgba(255,209,102,0.8)]" />
 
-                {/* Red Ghost - Chasing close */}
-                <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '0.4s' }}>
-                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-red-600 animate-bounce drop-shadow-[0_0_8px_rgba(220,38,38,0.8)]" />
-                </div>
+                {/* Spacing for real chase feel */}
+                <div className="w-16 lg:w-20"></div>
 
-                {/* Pink Ghost - Chasing slightly behind */}
-                <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '0.8s' }}>
-                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-pink-500 animate-bounce drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]" />
-                </div>
-
-                {/* Cyan Ghost - Further back */}
-                <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '1.2s' }}>
-                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-cyan-400 animate-bounce drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
-                </div>
-
-                 {/* Orange Ghost - Last */}
-                <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '1.6s' }}>
-                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-orange-500 animate-bounce drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
-                </div>
+                {/* Ghosts (Size matches Pac-Man) */}
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-red-600 animate-bounce drop-shadow-[0_0_5px_rgba(220,38,38,0.8)]" style={{ animationDuration: '0.4s' }} />
+                <div className="w-2"></div>
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-pink-500 animate-bounce drop-shadow-[0_0_5px_rgba(236,72,153,0.8)] delay-75" style={{ animationDuration: '0.45s' }} />
+                <div className="w-2"></div>
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-cyan-400 animate-bounce drop-shadow-[0_0_5px_rgba(34,211,238,0.8)] delay-150" style={{ animationDuration: '0.5s' }} />
+                <div className="w-2"></div>
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-orange-500 animate-bounce drop-shadow-[0_0_5px_rgba(249,115,22,0.8)] delay-200" style={{ animationDuration: '0.55s' }} />
             </div>
         </div>
 
         {/* Text Content - Positioned like a Score Box or Dialog */}
-        <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+        <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center mt-20">
 
-          <div className="retro-ui-box flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-6 bg-black/90">
             <div className="mb-2 inline-block animate-bounce">
                 <span className="bg-accent text-accent-foreground px-4 py-2 rounded-sm font-heading font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(255,209,102,0.6)]">
                 Portfolio
                 </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground tracking-tight">
-                <span className="text-primary block mb-2 text-xl md:text-2xl uppercase tracking-widest">Player Select</span>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-white retro-text-shadow tracking-tight">
+                <span className="text-primary block mb-2 text-xl md:text-2xl uppercase tracking-widest"> </span>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary drop-shadow-md">{portfolioData.about.name}</span>
             </h1>
 
@@ -174,12 +163,12 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full mt-4">
                 <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none border-b-4 border-r-4 border-black active:border-b-0 active:border-r-0 active:translate-y-1 active:translate-x-1 uppercase tracking-wider w-full sm:w-auto" asChild>
                 <a href="#projects">
-                    Start Game
+                    View Projects
                 </a>
                 </Button>
                 <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none active:translate-y-1 bg-transparent uppercase tracking-wider w-full sm:w-auto" asChild>
                 <a href="#contact">
-                    Insert Coin
+                    Contact Me
                 </a>
                 </Button>
             </div>
@@ -275,7 +264,7 @@ const Index = () => {
                   {category.items.map((item, i) => (
                     <div key={i} className="flex items-center gap-3 bg-background/30 p-3 rounded-none hover:bg-primary/20 transition-colors">
                       <img src={item.icon} alt={item.name} className="w-6 h-6" />
-                      <span className="font-heading font-semibold text-sm text-foreground">{item.name}</span>
+                      <span className="font-heading font-semibold text-sm text-white retro-text-shadow">{item.name}</span>
                     </div>
                   ))}
                 </div>
@@ -351,7 +340,7 @@ const Index = () => {
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-8 relative z-10">
                 Let's Connect
               </h2>
-              <p className="text-xl text-foreground mb-12 font-medium relative z-10">
+              <p className="text-xl text-white retro-text-shadow mb-12 font-medium relative z-10">
                 Don't let the game end here. <br/> I'm available for new opportunities
               </p>
 

@@ -270,3 +270,18 @@
   width: 90%;
   margin: 0 auto;
 }
+
+/* Arcade Dots Only Background */
+.arcade-dots-bg {
+  background-color: #000;
+  background-image:
+    /* Pellets - smaller and more spaced like arcade */
+    radial-gradient(circle, #ffb8ae 2px, transparent 2.5px);
+  background-size: 40px 40px; /* Grid spacing */
+  background-position: 20px 20px; /* Center pellets */
+}
+
+/* Retro Text Shadow */
+.retro-text-shadow {
+  text-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(0,0,0,0.5);
+}
