@@ -94,61 +94,97 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden hero-maze-bg">
+      <section id="home" className="min-h-screen flex flex-col items-center justify-center pt-20 relative overflow-hidden arcade-track-bg">
 
-        {/* Realistic Pac-Man Chase Animation */}
-        <div className="absolute top-[40%] md:top-[60%] w-full h-24 z-0 pointer-events-none overflow-visible">
-            <div className="animate-slide-in-right opacity-90 absolute left-[-20%] flex items-center gap-8">
-                {/* Pac-Man */}
-                <PacMan className="w-24 h-24 text-accent drop-shadow-[0_0_10px_rgba(255,209,102,0.8)]" />
-
-                {/* Pellets being eaten (behind Pac-Man, visibly disappearing? Hard to animate simply) */}
-                {/* Instead, just ghosts chasing */}
-
-                {/* Ghosts */}
-                <Ghost className="w-20 h-20 text-red-600 animate-bounce drop-shadow-[0_0_8px_rgba(220,38,38,0.8)]" style={{ animationDuration: '0.5s' }} />
-                <Ghost className="w-20 h-20 text-pink-500 animate-bounce drop-shadow-[0_0_8px_rgba(236,72,153,0.8)] delay-75" style={{ animationDuration: '0.6s' }} />
-                <Ghost className="w-20 h-20 text-cyan-400 animate-bounce drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] delay-150" style={{ animationDuration: '0.5s' }} />
-                <Ghost className="w-20 h-20 text-orange-500 animate-bounce drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] delay-200" style={{ animationDuration: '0.7s' }} />
+        {/* Game UI - Top Bar */}
+        <div className="absolute top-24 left-0 w-full px-6 flex justify-between font-heading text-xl text-white z-20 pointer-events-none">
+            <div className="flex flex-col animate-pulse">
+                <span className="text-red-500">1UP</span>
+                <span>00</span>
+            </div>
+            <div className="flex flex-col text-center">
+                 <span className="text-accent">HIGH SCORE</span>
+                 <span>5000</span>
+            </div>
+             <div className="flex flex-col text-right animate-pulse delay-150">
+                <span className="text-red-500">2UP</span>
+                <span>00</span>
             </div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="mb-6 inline-block animate-bounce">
-             <span className="bg-accent text-accent-foreground px-4 py-2 rounded-sm font-heading font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(255,209,102,0.6)]">
-               Portfolio
-             </span>
+        {/* Realistic Pac-Man Chase Animation */}
+        <div className="absolute inset-0 z-0 pointer-events-none flex justify-center items-center opacity-70">
+            {/* Using a container aligned with the grid */}
+            <div className="relative w-[360px] h-[360px] lg:w-[600px] lg:h-[600px]">
+                {/* Pac-Man */}
+                <div className="absolute left-0 top-0 animate-maze-chase">
+                     <PacMan className="w-16 h-16 lg:w-24 lg:h-24 text-accent drop-shadow-[0_0_10px_rgba(255,209,102,0.8)]" />
+                </div>
+
+                {/* Red Ghost - Chasing close */}
+                <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '0.4s' }}>
+                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-red-600 animate-bounce drop-shadow-[0_0_8px_rgba(220,38,38,0.8)]" />
+                </div>
+
+                {/* Pink Ghost - Chasing slightly behind */}
+                <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '0.8s' }}>
+                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-pink-500 animate-bounce drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]" />
+                </div>
+
+                {/* Cyan Ghost - Further back */}
+                <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '1.2s' }}>
+                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-cyan-400 animate-bounce drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                </div>
+
+                 {/* Orange Ghost - Last */}
+                <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '1.6s' }}>
+                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-orange-500 animate-bounce drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
+                </div>
+            </div>
+        </div>
+
+        {/* Text Content - Positioned like a Score Box or Dialog */}
+        <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+
+          <div className="retro-ui-box flex flex-col items-center gap-6">
+            <div className="mb-2 inline-block animate-bounce">
+                <span className="bg-accent text-accent-foreground px-4 py-2 rounded-sm font-heading font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(255,209,102,0.6)]">
+                Portfolio
+                </span>
+            </div>
+
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground tracking-tight">
+                <span className="text-primary block mb-2 text-xl md:text-2xl uppercase tracking-widest">Player Select</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary drop-shadow-md">{portfolioData.about.name}</span>
+            </h1>
+
+            <div className="text-xl md:text-3xl font-mono text-muted-foreground h-[60px] min-w-[300px] flex items-center justify-center">
+                <Typewriter
+                options={{
+                    strings: portfolioData.hero.typingLines.map(l => l.text),
+                    autoStart: true,
+                    loop: true,
+                    delay: 50,
+                    deleteSpeed: 30,
+                    cursor: '█'
+                }}
+                />
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full mt-4">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none border-b-4 border-r-4 border-black active:border-b-0 active:border-r-0 active:translate-y-1 active:translate-x-1 uppercase tracking-wider w-full sm:w-auto" asChild>
+                <a href="#projects">
+                    Start Game
+                </a>
+                </Button>
+                <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none active:translate-y-1 bg-transparent uppercase tracking-wider w-full sm:w-auto" asChild>
+                <a href="#contact">
+                    Insert Coin
+                </a>
+                </Button>
+            </div>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-heading font-bold mb-6 text-foreground tracking-tight bg-black/50 backdrop-blur-sm p-4 rounded-lg inline-block">
-             <span className="text-primary block mb-2">Hello, World!</span>
-             I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">{portfolioData.about.name}</span>
-          </h1>
-
-          <div className="text-xl md:text-3xl font-mono text-muted-foreground mb-12 h-[60px] bg-black/30 backdrop-blur-sm p-2 rounded-lg inline-block min-w-[300px]">
-            <Typewriter
-              options={{
-                strings: portfolioData.hero.typingLines.map(l => l.text),
-                autoStart: true,
-                loop: true,
-                delay: 50,
-                deleteSpeed: 30,
-              }}
-            />
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none border-b-4 border-r-4 border-black active:border-b-0 active:border-r-0 active:translate-y-1 active:translate-x-1" asChild>
-              <a href="#projects">
-                 View Projects
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none active:translate-y-1 bg-black/50" asChild>
-              <a href="#contact">
-                 Contact Me
-              </a>
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -159,12 +195,12 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
-               <div className="bg-card text-card-foreground p-8 rounded-sm shadow-none border-4 border-primary relative overflow-hidden group">
+               <div className="bg-card text-card-foreground p-8 rounded-none shadow-none retro-pixel-border border-primary relative overflow-hidden group">
                   <div className="absolute top-0 left-0 w-full h-2 bg-primary/20"></div>
                   <div className="flex items-center gap-3 mb-6 border-b-2 border-primary/20 pb-4">
-                    <div className="w-4 h-4 rounded-sm bg-red-500" />
-                    <div className="w-4 h-4 rounded-sm bg-yellow-500" />
-                    <div className="w-4 h-4 rounded-sm bg-green-500" />
+                    <div className="w-4 h-4 rounded-none bg-red-500" />
+                    <div className="w-4 h-4 rounded-none bg-yellow-500" />
+                    <div className="w-4 h-4 rounded-none bg-green-500" />
                     <h2 className="ml-auto font-heading font-bold text-xl uppercase text-primary tracking-widest">About Me</h2>
                   </div>
 
@@ -177,7 +213,7 @@ const Index = () => {
 
                   <div className="grid grid-cols-2 gap-4">
                     {portfolioData.about.details.map((detail, idx) => (
-                      <div key={idx} className="bg-background/10 p-4 rounded-sm backdrop-blur-sm">
+                      <div key={idx} className="bg-background/10 p-4 rounded-none backdrop-blur-sm">
                         <span className="block text-primary font-mono text-sm uppercase mb-1">{detail.label}</span>
                         <span className="font-heading font-bold text-lg">{detail.value}</span>
                       </div>
@@ -199,13 +235,13 @@ const Index = () => {
                   and optimizing performance.
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                  <div className="px-6 py-3 rounded-sm bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
+                  <div className="px-6 py-3 rounded-none bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
                     <Code size={20} /> Clean Code
                   </div>
-                  <div className="px-6 py-3 rounded-sm bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
+                  <div className="px-6 py-3 rounded-none bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
                     <Terminal size={20} /> Performance
                   </div>
-                  <div className="px-6 py-3 rounded-sm bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
+                  <div className="px-6 py-3 rounded-none bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
                     <Gamepad2 size={20} /> UX Design
                   </div>
                 </div>
@@ -227,7 +263,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioData.skills.categories.map((category, idx) => (
-              <Card key={idx} className="bg-secondary border-none p-6 rounded-sm relative overflow-hidden group">
+              <Card key={idx} className="bg-secondary border-none p-6 rounded-none relative overflow-hidden group retro-pixel-border">
                 <div className="absolute top-0 right-0 p-4 opacity-20">
                   <Gamepad2 size={60} className="text-primary" />
                 </div>
@@ -237,7 +273,7 @@ const Index = () => {
 
                 <div className="grid grid-cols-2 gap-4 relative z-10">
                   {category.items.map((item, i) => (
-                    <div key={i} className="flex items-center gap-3 bg-background/30 p-3 rounded-sm hover:bg-primary/20 transition-colors">
+                    <div key={i} className="flex items-center gap-3 bg-background/30 p-3 rounded-none hover:bg-primary/20 transition-colors">
                       <img src={item.icon} alt={item.name} className="w-6 h-6" />
                       <span className="font-heading font-semibold text-sm text-foreground">{item.name}</span>
                     </div>
@@ -261,7 +297,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {portfolioData.projects.items.map((project, idx) => (
-              <Card key={idx} className="bg-card text-card-foreground border-4 border-muted p-8 rounded-sm shadow-none flex flex-col h-full">
+              <Card key={idx} className="bg-card text-card-foreground p-8 rounded-none shadow-none flex flex-col h-full retro-pixel-border border-muted">
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-3xl font-heading font-bold text-primary-foreground">{project.title}</h3>
                 </div>
@@ -273,7 +309,7 @@ const Index = () => {
                 <div className="space-y-6 mt-auto">
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="px-3 py-1 bg-white/20 rounded-sm text-sm font-bold font-mono text-primary-foreground">
+                      <span key={tIdx} className="px-3 py-1 bg-white/20 rounded-none text-sm font-bold font-mono text-primary-foreground">
                         #{tag.name}
                       </span>
                     ))}
@@ -285,7 +321,7 @@ const Index = () => {
                         key={bIdx}
                         asChild
                         variant={btn.variant === "outline" ? "outline" : "default"}
-                        className={`font-heading font-bold rounded-sm w-full transition-none active:translate-y-1 ${
+                        className={`font-heading font-bold rounded-none w-full transition-none active:translate-y-1 ${
                           btn.variant === "outline"
                             ? "bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-card"
                             : "bg-primary-foreground text-card hover:bg-primary-foreground/90 border-b-4 border-r-4 border-black/30 active:border-none"
@@ -309,7 +345,7 @@ const Index = () => {
       {/* Contact Section */}
       <section id="contact" className="py-20 mb-20 bg-maze">
         <div className="container mx-auto px-6 max-w-4xl text-center">
-           <div className="bg-secondary border-4 border-accent p-12 rounded-sm relative overflow-hidden">
+           <div className="bg-secondary retro-pixel-border border-accent p-12 rounded-none relative overflow-hidden">
               <div className="absolute inset-0 bg-maze opacity-10"></div>
 
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-8 relative z-10">
@@ -320,7 +356,7 @@ const Index = () => {
               </p>
 
               <div className="flex flex-wrap justify-center gap-6 relative z-10">
-                <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground font-heading font-bold text-xl px-10 py-8 rounded-sm shadow-none border-b-4 border-r-4 border-black transition-transform active:scale-95 active:border-none" asChild>
+                <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground font-heading font-bold text-xl px-10 py-8 rounded-none shadow-none border-b-4 border-r-4 border-black transition-transform active:scale-95 active:border-none" asChild>
                   <a href={portfolioData.contact.ctaLink}>
                     <Mail className="mr-3" /> Contact Me
                   </a>
@@ -333,7 +369,7 @@ const Index = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-sm border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-none hover:rotate-0"
+                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-none border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-none hover:rotate-0"
                     >
                       {social.href.includes('github') ? <Github size={32} /> : <Linkedin size={32} />}
                     </a>
