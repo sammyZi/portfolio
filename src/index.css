@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=VT323&family=Exo+2:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
+/* ── Pac-Man Ghost Custom Cursor ── */
+*,
+*::before,
+*::after {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M4 28 L4 12 Q4 4 16 4 Q28 4 28 12 L28 28 L24 24 L20 28 L16 24 L12 28 L8 24 Z' fill='%2322d3ee'/%3E%3Ccircle cx='12' cy='14' r='3' fill='white'/%3E%3Ccircle cx='20' cy='14' r='3' fill='white'/%3E%3Ccircle cx='13' cy='15' r='1.5' fill='%231a0b2e'/%3E%3Ccircle cx='21' cy='15' r='1.5' fill='%231a0b2e'/%3E%3C/svg%3E") 16 4, auto;
+}
+
+a,
+button,
+[role="button"],
+input,
+select,
+textarea,
+label[for],
+[tabindex] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M4 28 L4 12 Q4 4 16 4 Q28 4 28 12 L28 28 L24 24 L20 28 L16 24 L12 28 L8 24 Z' fill='%23d946ef'/%3E%3Ccircle cx='12' cy='14' r='3' fill='white'/%3E%3Ccircle cx='20' cy='14' r='3' fill='white'/%3E%3Ccircle cx='13' cy='15' r='1.5' fill='%231a0b2e'/%3E%3Ccircle cx='21' cy='15' r='1.5' fill='%231a0b2e'/%3E%3C/svg%3E") 16 4, pointer;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,7 +25,7 @@
 @layer base {
   :root {
     /* Pac-Man Inspired Theme - Dark Mode Default */
-    
+
     /* Background: Deep dark purple (#140a1f) */
     --background: 268 51% 8%;
 
@@ -16,7 +34,8 @@
 
     /* Cards: Soft peach (#ffb7a5) */
     --card: 12 100% 82%;
-    --card-foreground: 268 51% 8%; /* Dark text on light cards */
+    --card-foreground: 268 51% 8%;
+    /* Dark text on light cards */
 
     /* Popover: Same as card */
     --popover: 12 100% 82%;
@@ -47,7 +66,8 @@
     --input: 267 49% 24%;
     --ring: 23 100% 63%;
 
-    --radius: 1rem; /* Softer, rounded corners */
+    --radius: 1rem;
+    /* Softer, rounded corners */
 
     --sidebar-background: 268 51% 8%;
     --sidebar-foreground: 12 100% 82%;
@@ -64,15 +84,23 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading tracking-wide;
   }
 }
 
 @layer components {
+
   /* Arcade Maze Background */
   .bg-maze {
     background-color: hsl(var(--background));
@@ -95,12 +123,15 @@
   ::-webkit-scrollbar {
     width: 10px;
   }
+
   ::-webkit-scrollbar-track {
     @apply bg-background;
   }
+
   ::-webkit-scrollbar-thumb {
     @apply bg-primary rounded-full;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-accent;
   }
@@ -111,8 +142,15 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   .glow-text {
@@ -140,7 +178,8 @@
 
 /* Pixelated Border */
 .pixel-border {
-  border: 4px solid #ff8c42; /* Primary color */
+  border: 4px solid #ff8c42;
+  /* Primary color */
   border-radius: 0;
   box-shadow:
     4px 0 0 0 #ff8c42,
@@ -154,7 +193,8 @@
   /* Let's try a better pixel border using clip-path or multiple box shadows */
   box-shadow: none;
   border: none;
-  padding: 4px; /* Space for the border */
+  padding: 4px;
+  /* Space for the border */
   background:
     linear-gradient(#ff8c42, #ff8c42) left top,
     linear-gradient(#ff8c42, #ff8c42) left bottom,
@@ -169,7 +209,8 @@
   position: relative;
   border: 4px solid transparent;
   background-clip: padding-box;
-  box-shadow: 0 0 0 4px #ff8c42; /* Outer border */
+  box-shadow: 0 0 0 4px #ff8c42;
+  /* Outer border */
 }
 
 /* Truly pixelated corners require a specific SVG or complex CSS. Let's try the box-shadow method for "staircase" corners. */
@@ -190,13 +231,16 @@
   /* Remove border radius */
   border-radius: 0 !important;
   /* Add blocky shadows */
-  box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.5);
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.5);
 }
 
 .pixel-box::before {
   content: "";
   position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
   border: 4px solid transparent;
   /* This approach is getting complicated. Let's stick to sharp corners and a shadow. */
 }
@@ -206,38 +250,70 @@
   position: relative;
   border-width: 4px;
   border-style: solid;
-  border-color: #ff8c42; /* Primary */
+  border-color: #ff8c42;
+  /* Primary */
   border-radius: 0;
-  box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.5);
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.5);
 }
 
 .retro-pixel-border::before {
   content: "";
   position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px;
-  border: 4px solid transparent; /* Placeholder */
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 4px solid transparent;
+  /* Placeholder */
 }
 
 /* Game Animation Keyframes - Hero Maze */
 @keyframes maze-chase {
+
   /* Start top-left */
-  0% { transform: translate(0, 0) rotate(0deg); }
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
   /* Move Right */
-  25% { transform: translate(240px, 0) rotate(0deg); }
+  25% {
+    transform: translate(240px, 0) rotate(0deg);
+  }
+
   /* Turn Down */
-  26% { transform: translate(240px, 0) rotate(90deg); }
+  26% {
+    transform: translate(240px, 0) rotate(90deg);
+  }
+
   /* Move Down */
-  50% { transform: translate(240px, 120px) rotate(90deg); }
+  50% {
+    transform: translate(240px, 120px) rotate(90deg);
+  }
+
   /* Turn Left */
-  51% { transform: translate(240px, 120px) rotate(180deg); }
+  51% {
+    transform: translate(240px, 120px) rotate(180deg);
+  }
+
   /* Move Left */
-  75% { transform: translate(0, 120px) rotate(180deg); }
+  75% {
+    transform: translate(0, 120px) rotate(180deg);
+  }
+
   /* Turn Up */
-  76% { transform: translate(0, 120px) rotate(270deg); }
+  76% {
+    transform: translate(0, 120px) rotate(270deg);
+  }
+
   /* Move Up */
-  99% { transform: translate(0, 0) rotate(270deg); }
+  99% {
+    transform: translate(0, 0) rotate(270deg);
+  }
+
   /* Reset */
-  100% { transform: translate(0, 0) rotate(360deg); }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
 }
 
 .animate-maze-chase {
@@ -277,13 +353,15 @@
   background-image:
     /* Pellets - smaller and more spaced like arcade */
     radial-gradient(circle, #ffb8ae 2px, transparent 2.5px);
-  background-size: 40px 40px; /* Grid spacing */
-  background-position: 20px 20px; /* Center pellets */
+  background-size: 40px 40px;
+  /* Grid spacing */
+  background-position: 20px 20px;
+  /* Center pellets */
 }
 
 /* Retro Text Shadow */
 .retro-text-shadow {
-  text-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(0, 0, 0, 0.5);
 }
 
 /* Retro High Contrast Text Shadow */
@@ -300,12 +378,16 @@
 
 /* Specific colors for important elements */
 .retro-name {
-  color: #ffd166; /* Bright Yellow */
-  text-shadow: 4px 4px 0px #d946ef; /* Magenta shadow */
+  color: #ffd166;
+  /* Bright Yellow */
+  text-shadow: 4px 4px 0px #d946ef;
+  /* Magenta shadow */
+  word-spacing: 0.15em;
 }
 
 .retro-typewriter {
-  color: #22d3ee; /* Cyan */
+  color: #22d3ee;
+  /* Cyan */
   text-shadow: 2px 2px 0px #000;
 }
 
@@ -325,7 +407,8 @@
 
 .retro-btn-outline {
   background-color: #000 !important;
-  color: #22d3ee !important; /* Cyan text */
+  color: #22d3ee !important;
+  /* Cyan text */
   border: 4px solid #22d3ee !important;
   box-shadow: 4px 4px 0px 0px #fff !important;
   text-transform: uppercase;
@@ -340,6 +423,7 @@
 .retro-btn-primary {
   text-shadow: 2px 2px 0px #000;
 }
+
 .retro-btn-outline {
   text-shadow: 2px 2px 0px #000;
 }
@@ -373,32 +457,30 @@
   border: 4px solid var(--border-color);
 
   /* Clip path for true pixel corners */
-  clip-path: polygon(
-    4px 0, calc(100% - 4px) 0,
-    100% 4px, 100% calc(100% - 4px),
-    calc(100% - 4px) 100%, 4px 100%,
-    0 calc(100% - 4px), 0 4px
-  );
+  clip-path: polygon(4px 0, calc(100% - 4px) 0,
+      100% 4px, 100% calc(100% - 4px),
+      calc(100% - 4px) 100%, 4px 100%,
+      0 calc(100% - 4px), 0 4px);
 }
 
 /* Simpler Clip Path approach for better browser support and easier resizing */
 .pixel-corners-clip {
-  --b: 4px; /* border thickness */
-  --c: #ff8c42; /* color */
+  --b: 4px;
+  /* border thickness */
+  --c: #ff8c42;
+  /* color */
 
   border: var(--b) solid var(--c);
-  clip-path: polygon(
-    0 var(--b), var(--b) var(--b), var(--b) 0,
-    calc(100% - var(--b)) 0, calc(100% - var(--b)) var(--b), 100% var(--b),
-    100% calc(100% - var(--b)), calc(100% - var(--b)) calc(100% - var(--b)), calc(100% - var(--b)) 100%,
-    var(--b) 100%, var(--b) calc(100% - var(--b)), 0 calc(100% - var(--b))
-  );
+  clip-path: polygon(0 var(--b), var(--b) var(--b), var(--b) 0,
+      calc(100% - var(--b)) 0, calc(100% - var(--b)) var(--b), 100% var(--b),
+      100% calc(100% - var(--b)), calc(100% - var(--b)) calc(100% - var(--b)), calc(100% - var(--b)) 100%,
+      var(--b) 100%, var(--b) calc(100% - var(--b)), 0 calc(100% - var(--b)));
 }
 
 /* NES-style CSS border approximation for "rough" look */
 .nes-border-style {
   position: relative;
-  background: var(--card);
+  background: hsl(var(--card));
   border-style: solid;
   border-width: 4px;
   border-color: #ff8c42;

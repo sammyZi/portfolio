@@ -2,40 +2,75 @@
   "navigation": {
     "brand": "Sam@portfolio",
     "links": [
-      { "name": "Home", "href": "#home" },
-      { "name": "About", "href": "#about" },
-      { "name": "Skills", "href": "#skills" },
-      { "name": "Projects", "href": "#projects" },
-      { "name": "Contact", "href": "#contact" }
+      {
+        "name": "Home",
+        "href": "#home"
+      },
+      {
+        "name": "About",
+        "href": "#about"
+      },
+      {
+        "name": "Skills",
+        "href": "#skills"
+      },
+      {
+        "name": "Projects",
+        "href": "#projects"
+      },
+      {
+        "name": "Contact",
+        "href": "#contact"
+      }
     ]
   },
   "hero": {
     "greeting": "~/welcome-to-portfolio",
     "typingLines": [
-      { "text": "Hello,", "className": "text-primary" },
       {
-        "text": "I'm a React & React Native Developer!!!",
+        "text": "Full Stack Developer",
+        "className": "text-primary"
+      },
+      {
+        "text": "React & React Native Dev",
+        "className": "text-foreground"
+      },
+      {
+        "text": "Cloud & DevOps Enthusiast",
+        "className": "text-foreground"
+      },
+      {
+        "text": "Building Production-Ready Apps",
         "className": "text-foreground"
       }
     ],
-    "subtitle": "React & React Native developer focused on building smooth, cross-platform mobile apps and web applications with great user experiences.",
+    "subtitle": "Full Stack Developer experienced in building scalable web and mobile applications using React Native, Next.js, Node.js, and FastAPI. Skilled in cloud deployment on AWS with Docker.",
     "ctaButton": "View Projects"
   },
   "about": {
     "command": "cat ~/about.txt",
     "title": "About Me",
     "name": "Samarth Bhinge",
-    "description1": "As a React and React Native developer, I specialize in crafting fast, reliable, and visually appealing mobile apps and web applications that run seamlessly across platforms.",
-    "description2": "When I'm not coding, you'll find me exploring new mobile frameworks, testing out UI patterns, or staying updated with the latest trends in cross-platform development.",
+    "description1": "Full Stack Developer experienced in building scalable web and mobile applications using React Native, Next.js, Node.js, and FastAPI. Skilled in cloud deployment on AWS with Docker, focusing on production-ready applications with clean architecture.",
+    "description2": "Currently pursuing B.E. in Information Technology at Sinhgad Institute of Technology and Science (2022–2026). When I'm not coding, I'm exploring new frameworks, DevOps tooling, or competing in hackathons.",
     "details": [
-      { "label": "Experience", "value": "<1 Year" },
-      { "label": "Location", "value": "Pune,India" },
+      {
+        "label": "Education",
+        "value": "B.E. IT — CGPA 7.4"
+      },
+      {
+        "label": "Location",
+        "value": "Pune, India"
+      },
       {
         "label": "Status",
         "value": "Available",
         "className": "text-terminal-success"
       },
-      { "label": "Focus", "value": "React & React Native Development" }
+      {
+        "label": "Focus",
+        "value": "Full Stack & Cloud"
+      }
     ],
     "terminal": {
       "title": "~/profile",
@@ -47,12 +82,12 @@
         },
         {
           "command": "$ ls skills/",
-          "output": "react-native/ expo/ typescript/ mobile-tools/",
+          "output": "react/ next.js/ node.js/ fastapi/ aws/ docker/",
           "outputClass": "text-terminal-output"
         },
         {
           "command": "$ echo $PASSION",
-          "output": "building-amazing-mobile-apps",
+          "output": "building-scalable-production-apps",
           "outputClass": "text-terminal-output"
         }
       ]
@@ -61,70 +96,82 @@
   "skills": {
     "command": "ls -la ~/skills",
     "title": "Technical Skills",
-    "subtitle": "A comprehensive toolkit for modern mobile development",
+    "subtitle": "A comprehensive toolkit for modern full stack development",
     "categories": [
       {
-        "title": "Mobile Development",
-        "description": "Building cross-platform mobile applications",
-        "folder": "mobile/",
+        "title": "Frontend Development",
+        "description": "Building modern, responsive web & mobile UIs",
+        "folder": "frontend/",
         "items": [
+          {
+            "name": "React",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+          },
+          {
+            "name": "Next.js",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+          },
           {
             "name": "React Native",
             "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
           },
           {
-            "name": "Expo",
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-          },
-          {
             "name": "TypeScript",
             "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-          },
-          {
-            "name": "Redux",
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
           }
         ]
       },
       {
-        "title": "Backend Integration",
-        "description": "Connecting mobile apps to scalable backend services",
+        "title": "Backend Development",
+        "description": "Scalable APIs, microservices & databases",
         "folder": "backend/",
         "items": [
           {
-            "name": "Node.js & Express",
+            "name": "Node.js",
             "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
           },
           {
-            "name": "Firebase",
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+            "name": "FastAPI",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
           },
           {
-            "name": "REST & GraphQL",
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg"
+            "name": "PostgreSQL",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
           },
           {
             "name": "MongoDB",
             "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+          },
+          {
+            "name": "Redis",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
           }
         ]
       },
       {
-        "title": "Tools & DevOps",
-        "description": "Development and deployment tools for mobile apps",
-        "folder": "tools/",
+        "title": "Cloud & DevOps",
+        "description": "Infrastructure, CI/CD & containerization",
+        "folder": "devops/",
         "items": [
           {
-            "name": "Git & GitHub",
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+            "name": "AWS",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
           },
           {
             "name": "Docker",
             "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
           },
           {
-            "name": "AWS",
-            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+            "name": "Terraform",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg"
+          },
+          {
+            "name": "Kubernetes",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
+          },
+          {
+            "name": "Jenkins",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg"
           }
         ]
       }
@@ -133,18 +180,67 @@
   "projects": {
     "command": "find ~/projects -type f",
     "title": "Featured Projects",
-    "subtitle": "A showcase of my recent mobile app projects",
+    "subtitle": "Production-ready applications built with modern tech stacks",
     "items": [
       {
         "folder": "project-01/",
-        "title": "HR Nexus",
-        "description": "An AI-powered HR management platform with intelligent document management, task tracking, and AI assistant. Features: Natural language queries for HR documents, AI-powered search with citations, multi-format document support (PDF, Word, Text), task management with priority levels, and multi-tenant organization support with role-based access.",
+        "title": "3-Tier Full Stack Task Manager",
+        "description": "Full stack task management application with React frontend, Node.js Express backend, and PostgreSQL database. Deployed scalable infrastructure on AWS using VPC, Application Load Balancer, Auto Scaling Groups, and RDS. Designed secure RESTful APIs with JWT authentication and automated infrastructure provisioning using Terraform.",
         "tags": [
-          { "name": "Next.js", "class": "bg-primary/20 text-primary" },
-          { "name": "FastAPI", "class": "bg-teal-100 text-teal-800" },
-          { "name": "LangChain", "class": "bg-primary/20 text-primary" },
-          { "name": "Ollama", "class": "bg-teal-100 text-teal-800" },
-          { "name": "RAG", "class": "bg-primary/20 text-primary" }
+          {
+            "name": "React",
+            "class": "bg-primary/20 text-primary"
+          },
+          {
+            "name": "Node.js",
+            "class": "bg-teal-100 text-teal-800"
+          },
+          {
+            "name": "PostgreSQL",
+            "class": "bg-primary/20 text-primary"
+          },
+          {
+            "name": "AWS",
+            "class": "bg-teal-100 text-teal-800"
+          },
+          {
+            "name": "Terraform",
+            "class": "bg-primary/20 text-primary"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "GitHub",
+            "variant": "outline",
+            "link": "https://github.com/sammyZi"
+          }
+        ]
+      },
+      {
+        "folder": "project-02/",
+        "title": "HR Nexus — AI HR Platform",
+        "description": "AI-powered HR management platform with Next.js frontend and FastAPI backend for resume parsing and candidate matching. Implemented semantic search using vector database and RAG architecture. Optimized performance using Redis caching, reducing API response times by 60%. Designed scalable backend with PostgreSQL.",
+        "tags": [
+          {
+            "name": "Next.js",
+            "class": "bg-primary/20 text-primary"
+          },
+          {
+            "name": "FastAPI",
+            "class": "bg-teal-100 text-teal-800"
+          },
+          {
+            "name": "PostgreSQL",
+            "class": "bg-primary/20 text-primary"
+          },
+          {
+            "name": "Redis",
+            "class": "bg-teal-100 text-teal-800"
+          },
+          {
+            "name": "RAG",
+            "class": "bg-primary/20 text-primary"
+          }
         ],
         "buttons": [
           {
@@ -160,65 +256,71 @@
         ]
       },
       {
-        "folder": "project-02/",
-        "title": "Task Manager App",
-        "description": "A simple and powerful Task Management App built with React Native and Firebase. Manage your daily tasks with ease — create, update, filter, and organize them based on priority and status.",
-        "tags": [
-          { "name": "React Native", "class": "bg-primary/20 text-primary" },
-          { "name": "Expo", "class": "bg-teal-100 text-teal-800" },
-          { "name": "Tailwind", "class": "bg-primary/20 text-primary" },
-          { "name": "Firebase", "class": "bg-teal-100 text-teal-800" },
-          { "name": "Zustand", "class": "bg-primary/20 text-primary" }
-        ],
-        "buttons": [
-          {
-            "text": "GitHub",
-            "variant": "outline",
-            "link": "https://github.com/sammyZi/Gig--task-management-react-native"
-          }
-        ]
-      },
-      {
         "folder": "project-03/",
-        "title": "Student Attendance App",
-        "description": "A React Native app to manage student attendance for sessions using student card numbers and date selection.",
+        "title": "AWS CI/CD Pipeline",
+        "description": "Automated CI/CD pipeline for containerized applications using GitHub Actions and AWS services. Containerized backend applications using Docker with multi-stage builds for optimized image sizes. Deployed on AWS ECS with auto-scaling and load balancing. Implemented Infrastructure as Code using Terraform for consistent environments.",
         "tags": [
-          { "name": "React Native", "class": "bg-primary/20 text-primary" },
-          { "name": "Firebase", "class": "bg-teal-100 text-teal-800" },
-          { "name": "Tailwind", "class": "bg-primary/20 text-primary" }
+          {
+            "name": "Docker",
+            "class": "bg-primary/20 text-primary"
+          },
+          {
+            "name": "AWS ECS",
+            "class": "bg-teal-100 text-teal-800"
+          },
+          {
+            "name": "Terraform",
+            "class": "bg-primary/20 text-primary"
+          },
+          {
+            "name": "GitHub Actions",
+            "class": "bg-teal-100 text-teal-800"
+          }
         ],
         "buttons": [
           {
             "text": "GitHub",
             "variant": "outline",
-            "link": "https://github.com/sammyZi/Student-Attendence-React-Native"
+            "link": "https://github.com/sammyZi"
           }
         ]
       },
       {
         "folder": "project-04/",
-        "title": "Restate",
-        "description": "This is a mobile application project for browsing and managing real estate listings, built with a modern and user-friendly interface.",
+        "title": "Fitness Tracker Mobile App",
+        "description": "Cross-platform mobile application for iOS and Android using React Native and Expo. Designed intuitive user interface with real-time activity tracking and data visualization for a seamless fitness experience.",
         "tags": [
-          { "name": "React Native", "class": "bg-primary/20 text-primary" },
-          { "name": "Expo", "class": "bg-teal-100 text-teal-800" },
-          { "name": "Tailwind", "class": "bg-primary/20 text-primary" },
-          { "name": "App Write", "class": "bg-teal-100 text-teal-800" }
+          {
+            "name": "React Native",
+            "class": "bg-primary/20 text-primary"
+          },
+          {
+            "name": "Expo",
+            "class": "bg-teal-100 text-teal-800"
+          }
         ],
         "buttons": [
           {
             "text": "GitHub",
             "variant": "outline",
-            "link": "https://github.com/sammyZi/Real-Estate-App-React-Native"
+            "link": "https://github.com/sammyZi"
           }
         ]
       }
     ]
   },
+  "achievements": [
+    {
+      "title": "Top 7 Finalist — AIBoomi Weekend Hacks Pune 2026",
+      "year": "2026",
+      "team": "Team Byte Storm",
+      "description": "Ranked Top 7 among 170+ participants in a competitive 24-hour hackathon focused on AI innovation. Built an AI-powered drug discovery platform integrating AlphaFold, ChEMBL database, and molecular docking simulations. Reduced drug candidate discovery time from hours/days to seconds using automated computational pipelines."
+    }
+  ],
   "contact": {
     "command": "cat ~/contact-info.txt",
     "title": "Let's Work Together",
-    "subtitle": "Ready to bring your mobile app ideas to life? Let's discuss your next project.",
+    "subtitle": "Ready to build something great? Let's discuss your next project.",
     "info": {
       "title": "contact.txt",
       "details": [
@@ -226,6 +328,11 @@
           "label": "email:",
           "value": "bhingesamarth@gmail.com",
           "href": "mailto:bhingesamarth@gmail.com"
+        },
+        {
+          "label": "phone:",
+          "value": "+91-8857849520",
+          "href": "tel:+918857849520"
         },
         {
           "label": "github:",
@@ -238,9 +345,9 @@
           "href": "https://linkedin.com/in/samarth-bhinge"
         },
         {
-          "label": "Instagram:",
-          "value": "@sammyi_57",
-          "href": "https://www.instagram.com/sammyi_57/"
+          "label": "website:",
+          "value": "samarthbhinge.tech",
+          "href": "https://samarthbhinge.tech"
         }
       ]
     },
