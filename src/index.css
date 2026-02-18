@@ -285,3 +285,61 @@
 .retro-text-shadow {
   text-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(0,0,0,0.5);
 }
+
+/* Retro High Contrast Text Shadow */
+.retro-text-pop {
+  color: #fff;
+  text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  font-weight: 700;
+}
+
+/* Specific colors for important elements */
+.retro-name {
+  color: #ffd166; /* Bright Yellow */
+  text-shadow: 4px 4px 0px #d946ef; /* Magenta shadow */
+}
+
+.retro-typewriter {
+  color: #22d3ee; /* Cyan */
+  text-shadow: 2px 2px 0px #000;
+}
+
+/* Retro Buttons */
+.retro-btn-primary {
+  background-color: #ff8c42 !important;
+  color: #fff !important;
+  border: 4px solid #fff !important;
+  box-shadow: 4px 4px 0px 0px #000 !important;
+  text-transform: uppercase;
+}
+
+.retro-btn-primary:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: none !important;
+}
+
+.retro-btn-outline {
+  background-color: #000 !important;
+  color: #22d3ee !important; /* Cyan text */
+  border: 4px solid #22d3ee !important;
+  box-shadow: 4px 4px 0px 0px #fff !important;
+  text-transform: uppercase;
+}
+
+.retro-btn-outline:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: none !important;
+}
+
+/* Override text color in buttons to be readable */
+.retro-btn-primary {
+  text-shadow: 2px 2px 0px #000;
+}
+.retro-btn-outline {
+  text-shadow: 2px 2px 0px #000;
+}

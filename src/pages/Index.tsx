@@ -34,7 +34,7 @@ const PacMan = ({ className, rotation = 0 }: { className?: string; rotation?: nu
 );
 
 const SectionDivider = () => (
-  <div className="flex justify-center items-center gap-4 py-12 overflow-hidden">
+  <div className="flex justify-center items-center gapy-12 overflow-hidden">
     {[...Array(20)].map((_, i) => (
       <div key={i} className="w-3 h-3 bg-accent rounded-sm animate-pulse" style={{ animationDelay: `${i * 0.1}s` }} />
     ))}
@@ -136,18 +136,18 @@ const Index = () => {
         <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center mt-20">
 
           <div className="flex flex-col items-center gap-6 bg-black/90">
-            <div className="mb-2 inline-block animate-bounce">
+            <div className="mb-2 animate-bounce">
                 <span className="bg-accent text-accent-foreground px-4 py-2 rounded-sm font-heading font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(255,209,102,0.6)]">
                 Portfolio
                 </span>
             </div>
 
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-white retro-text-shadow tracking-tight">
-                <span className="text-primary block mb-2 text-xl md:text-2xl uppercase tracking-widest"> </span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary drop-shadow-md">{portfolioData.about.name}</span>
+                <span className="retro-text-pop text-xl md:text-2xl uppercase tracking-widest text-white"> </span>
+                <span className="retro-name">{portfolioData.about.name}</span>
             </h1>
 
-            <div className="text-xl md:text-3xl font-mono text-muted-foreground h-[60px] min-w-[300px] flex items-center justify-center">
+            <div className="text-xl md:text-3xl font-mono retro-typewriter h-[60px] min-w-[300px] flex items-center justify-center">
                 <Typewriter
                 options={{
                     strings: portfolioData.hero.typingLines.map(l => l.text),
@@ -161,12 +161,12 @@ const Index = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full mt-4">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none border-b-4 border-r-4 border-black active:border-b-0 active:border-r-0 active:translate-y-1 active:translate-x-1 uppercase tracking-wider w-full sm:w-auto" asChild>
+                <Button size="lg" className="retro-btn-primary font-heading font-bold text-lg px-8 py-6 rounded-sm  uppercase tracking-wider w-full sm:w-auto" asChild>
                 <a href="#projects">
                     View Projects
                 </a>
                 </Button>
-                <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none active:translate-y-1 bg-transparent uppercase tracking-wider w-full sm:w-auto" asChild>
+                <Button variant="outline" size="lg" className="retro-btn-outline font-heading font-bold text-lg px-8 py-6 rounded-sm  bg-transparent uppercase tracking-wider w-full sm:w-auto" asChild>
                 <a href="#contact">
                     Contact Me
                 </a>
@@ -202,7 +202,7 @@ const Index = () => {
 
                   <div className="grid grid-cols-2 gap-4">
                     {portfolioData.about.details.map((detail, idx) => (
-                      <div key={idx} className="bg-background/10 p-4 rounded-none backdrop-blur-sm">
+                      <div key={idx} className="bg-background/10 rounded-none backdrop-blur-sm">
                         <span className="block text-primary font-mono text-sm uppercase mb-1">{detail.label}</span>
                         <span className="font-heading font-bold text-lg">{detail.value}</span>
                       </div>
@@ -223,7 +223,7 @@ const Index = () => {
                   Just like Pac-Man clearing the maze, I love solving complex problems
                   and optimizing performance.
                 </p>
-                <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                <div className="flex flex-wrap gajustify-center lg:justify-start">
                   <div className="px-6 py-3 rounded-none bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
                     <Code size={20} /> Clean Code
                   </div>
@@ -253,14 +253,14 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioData.skills.categories.map((category, idx) => (
               <Card key={idx} className="bg-secondary border-none p-6 rounded-none relative overflow-hidden group retro-pixel-border">
-                <div className="absolute top-0 right-0 p-4 opacity-20">
+                <div className="absolute top-0 right-0 opacity-20">
                   <Gamepad2 size={60} className="text-primary" />
                 </div>
 
                 <h3 className="text-xl font-heading font-bold text-primary mb-2 relative z-10">{category.title}</h3>
                 <p className="text-muted-foreground mb-6 relative z-10 text-sm">{category.description}</p>
 
-                <div className="grid grid-cols-2 gap-4 relative z-10">
+                <div className="grid grid-cols-2 garelative z-10">
                   {category.items.map((item, i) => (
                     <div key={i} className="flex items-center gap-3 bg-background/30 p-3 rounded-none hover:bg-primary/20 transition-colors">
                       <img src={item.icon} alt={item.name} className="w-6 h-6" />
@@ -304,7 +304,7 @@ const Index = () => {
                     ))}
                   </div>
 
-                  <div className="flex gap-4 pt-4 border-t border-primary-foreground/10">
+                  <div className="flex gapt-4 border-t border-primary-foreground/10">
                     {project.buttons.map((btn, bIdx) => (
                       <Button
                         key={bIdx}
