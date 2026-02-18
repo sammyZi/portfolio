@@ -94,40 +94,22 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+      <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden hero-maze-bg">
 
-        {/* Animated Background Pac-Man Elements */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-            {/* Top Row: Left to Right */}
-            <div className="absolute top-[10%] left-[-10%] animate-slide-in-right opacity-40 flex items-center gap-6">
-                <PacMan className="w-24 h-24 text-accent" />
-                <div className="flex gap-4">
-                  <div className="w-3 h-3 bg-accent rounded-sm" />
-                  <div className="w-3 h-3 bg-accent rounded-sm" />
-                  <div className="w-3 h-3 bg-accent rounded-sm" />
-                </div>
-            </div>
+        {/* Realistic Pac-Man Chase Animation */}
+        <div className="absolute top-[40%] md:top-[60%] w-full h-24 z-0 pointer-events-none overflow-visible">
+            <div className="animate-slide-in-right opacity-90 absolute left-[-20%] flex items-center gap-8">
+                {/* Pac-Man */}
+                <PacMan className="w-24 h-24 text-accent drop-shadow-[0_0_10px_rgba(255,209,102,0.8)]" />
 
-             {/* Bottom Row: Right to Left */}
-             <div className="absolute bottom-[20%] right-[-10%] animate-slide-in-left opacity-40 flex items-center gap-6">
-                 <PacMan className="w-20 h-20 text-accent" rotation={180} />
-                 <Ghost className="w-16 h-16 text-red-500 animate-bounce" />
-                 <Ghost className="w-16 h-16 text-pink-500 animate-bounce delay-100" />
-            </div>
+                {/* Pellets being eaten (behind Pac-Man, visibly disappearing? Hard to animate simply) */}
+                {/* Instead, just ghosts chasing */}
 
-             {/* Left Column: Top to Bottom */}
-             <div className="absolute left-[5%] top-[-10%] animate-slide-in-top opacity-30 flex flex-col items-center gap-6">
-                 <PacMan className="w-16 h-16 text-accent" rotation={90} />
-                 <div className="flex flex-col gap-4">
-                    <div className="w-2 h-2 bg-accent rounded-sm" />
-                    <div className="w-2 h-2 bg-accent rounded-sm" />
-                 </div>
-            </div>
-
-            {/* Right Column: Bottom to Top */}
-            <div className="absolute right-[5%] bottom-[-10%] animate-slide-in-bottom opacity-30 flex flex-col items-center gap-6">
-                 <PacMan className="w-24 h-24 text-accent" rotation={270} />
-                 <Ghost className="w-20 h-20 text-cyan-500 animate-bounce" />
+                {/* Ghosts */}
+                <Ghost className="w-20 h-20 text-red-600 animate-bounce drop-shadow-[0_0_8px_rgba(220,38,38,0.8)]" style={{ animationDuration: '0.5s' }} />
+                <Ghost className="w-20 h-20 text-pink-500 animate-bounce drop-shadow-[0_0_8px_rgba(236,72,153,0.8)] delay-75" style={{ animationDuration: '0.6s' }} />
+                <Ghost className="w-20 h-20 text-cyan-400 animate-bounce drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] delay-150" style={{ animationDuration: '0.5s' }} />
+                <Ghost className="w-20 h-20 text-orange-500 animate-bounce drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] delay-200" style={{ animationDuration: '0.7s' }} />
             </div>
         </div>
 
@@ -138,12 +120,12 @@ const Index = () => {
              </span>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-heading font-bold mb-6 text-foreground tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-heading font-bold mb-6 text-foreground tracking-tight bg-black/50 backdrop-blur-sm p-4 rounded-lg inline-block">
              <span className="text-primary block mb-2">Hello, World!</span>
              I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">{portfolioData.about.name}</span>
           </h1>
 
-          <div className="text-xl md:text-3xl font-mono text-muted-foreground mb-12 h-[60px]">
+          <div className="text-xl md:text-3xl font-mono text-muted-foreground mb-12 h-[60px] bg-black/30 backdrop-blur-sm p-2 rounded-lg inline-block min-w-[300px]">
             <Typewriter
               options={{
                 strings: portfolioData.hero.typingLines.map(l => l.text),
@@ -161,7 +143,7 @@ const Index = () => {
                  View Projects
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none active:translate-y-1" asChild>
+            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none active:translate-y-1 bg-black/50" asChild>
               <a href="#contact">
                  Contact Me
               </a>
@@ -173,7 +155,7 @@ const Index = () => {
       <SectionDivider />
 
       {/* About Section */}
-      <section id="about" className="py-20 relative">
+      <section id="about" className="py-20 relative bg-maze">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
@@ -202,7 +184,7 @@ const Index = () => {
                     ))}
                   </div>
 
-                  <PacManGhost color="#3a1f5c" className="absolute -bottom-10 -right-10 w-40 h-40 opacity-40" />
+                  <PacManGhost color="#3a1f5c" className="absolute -bottom-10 -right-10 w-40 h-40 opacity-10" />
                </div>
             </div>
 
@@ -236,7 +218,7 @@ const Index = () => {
       <SectionDivider />
 
       {/* Skills Section */}
-      <section id="skills" className="py-20">
+      <section id="skills" className="py-20 bg-maze">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-4">Skills</h2>
@@ -270,7 +252,7 @@ const Index = () => {
       <SectionDivider />
 
       {/* Projects Section */}
-      <section id="projects" className="py-20">
+      <section id="projects" className="py-20 bg-maze">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-4">Projects</h2>
@@ -325,10 +307,10 @@ const Index = () => {
       <SectionDivider />
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 mb-20">
+      <section id="contact" className="py-20 mb-20 bg-maze">
         <div className="container mx-auto px-6 max-w-4xl text-center">
            <div className="bg-secondary border-4 border-accent p-12 rounded-sm relative overflow-hidden">
-              <div className="absolute inset-0 bg-maze opacity-40"></div>
+              <div className="absolute inset-0 bg-maze opacity-10"></div>
 
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-8 relative z-10">
                 Let's Connect
@@ -351,7 +333,7 @@ const Index = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-24 h-24 bg-muted flex items-center justify-center rounded-sm border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-none hover:rotate-0"
+                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-sm border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-none hover:rotate-0"
                     >
                       {social.href.includes('github') ? <Github size={32} /> : <Linkedin size={32} />}
                     </a>
@@ -369,7 +351,7 @@ const Index = () => {
              © {new Date().getFullYear()} {portfolioData.about.name} • Thanks for visiting
           </p>
         </div>
-        <div className="absolute bottom-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-300"></div>
+        <div className="absolute bottom-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-50"></div>
       </footer>
     </div>
   );

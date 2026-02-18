@@ -123,3 +123,17 @@
     box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
   }
 }
+
+/* Hero Section Maze Background */
+.hero-maze-bg {
+  background-color: #000;
+  background-image:
+    /* Pellets */
+    radial-gradient(circle, #ffb8ae 3px, transparent 4px),
+    /* Vertical Blue Lines (Walls) */
+    linear-gradient(to right, transparent 98px, #1919a6 98px, #1919a6 102px, transparent 102px),
+    /* Horizontal Blue Lines (Walls) */
+    linear-gradient(to bottom, transparent 98px, #1919a6 98px, #1919a6 102px, transparent 102px);
+  background-size: 40px 40px, 120px 120px, 120px 120px;
+  background-position: 20px 20px, 10px 10px, 10px 10px;
+}
