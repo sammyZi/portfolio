@@ -68,7 +68,7 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground font-body bg-maze relative selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b-4 border-primary">
+      <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b-4 ">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <a href="#home" className="text-xl font-heading font-bold text-accent tracking-widest hover:scale-105 ">
             &lt;{portfolioData.navigation.brand} /&gt;
@@ -80,7 +80,7 @@ const Index = () => {
                 key={link.name}
                 href={link.href}
                 className={`font-heading text-sm uppercase tracking-wider transition-colors hover:text-primary ${
-                  activeSection === link.href.substring(1) ? "text-primary border-b-2 border-primary" : "text-muted-foreground"
+                  activeSection === link.href.substring(1) ? "text-primary border-b-2 " : "text-muted-foreground"
                 }`}
               >
                 {link.name}
@@ -112,38 +112,44 @@ const Index = () => {
             </div>
         </div>
 
-        {/* Multi-Directional Background Animations */}
+        {/* Multi-Directional Background Animations - PAC-MAN CHASING GHOSTS */}
+        {/* Pac-Man (Eater) should be BEHIND the Ghosts spatially (following them) */}
+
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
             {/* Left to Right (Initial) */}
             <div className="animate-slide-in-right opacity-90 absolute top-[30%] flex items-center w-full" style={{ animationDuration: '20s', animationDelay: '0s' }}>
-                <PacMan className="w-10 h-10 lg:w-12 lg:h-12 text-accent drop-shadow-[0_0_5px_rgba(255,209,102,0.8)]" />
-                <div className="w-16 lg:w-20"></div>
-                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-red-600 animate-bounce drop-shadow-[0_0_5px_rgba(220,38,38,0.8)]" style={{ animationDuration: '0.4s' }} />
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-blue-500 animate-bounce drop-shadow-[0_0_5px_rgba(59,130,246,0.8)]" /> {/* Blue Ghost (Scared) */}
                 <div className="w-2"></div>
-                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-pink-500 animate-bounce drop-shadow-[0_0_5px_rgba(236,72,153,0.8)] delay-75" style={{ animationDuration: '0.45s' }} />
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-blue-500 animate-bounce drop-shadow-[0_0_5px_rgba(59,130,246,0.8)] delay-75" />
+                <div className="w-16 lg:w-20"></div>
+                <PacMan className="w-10 h-10 lg:w-12 lg:h-12 text-accent drop-shadow-[0_0_5px_rgba(255,209,102,0.8)]" />
             </div>
 
             {/* Right to Left (Wait 5s) */}
             <div className="animate-slide-in-left opacity-90 absolute top-[70%] flex items-center w-full" style={{ animationDuration: '25s', animationDelay: '5s' }}>
-                <PacMan className="w-10 h-10 lg:w-12 lg:h-12 text-accent drop-shadow-[0_0_5px_rgba(255,209,102,0.8)]" rotation={180} />
-                <div className="w-16 lg:w-20"></div>
-                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-cyan-400 animate-bounce drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]" style={{ animationDuration: '0.5s' }} />
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-blue-500 animate-bounce drop-shadow-[0_0_5px_rgba(59,130,246,0.8)]" />
                 <div className="w-2"></div>
-                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-orange-500 animate-bounce drop-shadow-[0_0_5px_rgba(249,115,22,0.8)] delay-150" style={{ animationDuration: '0.55s' }} />
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-blue-500 animate-bounce drop-shadow-[0_0_5px_rgba(59,130,246,0.8)] delay-150" />
+                <div className="w-16 lg:w-20"></div>
+                <PacMan className="w-10 h-10 lg:w-12 lg:h-12 text-accent drop-shadow-[0_0_5px_rgba(255,209,102,0.8)]" rotation={180} />
             </div>
 
             {/* Top to Bottom (Wait 10s) */}
             <div className="animate-slide-in-top opacity-90 absolute left-[20%] flex flex-col items-center h-full" style={{ animationDuration: '30s', animationDelay: '10s' }}>
-                <PacMan className="w-10 h-10 lg:w-12 lg:h-12 text-accent drop-shadow-[0_0_5px_rgba(255,209,102,0.8)]" rotation={90} />
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-blue-500 animate-bounce drop-shadow-[0_0_5px_rgba(59,130,246,0.8)]" />
+                <div className="h-2"></div>
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-blue-500 animate-bounce drop-shadow-[0_0_5px_rgba(59,130,246,0.8)]" />
                 <div className="h-16 lg:h-20"></div>
-                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-red-600 animate-bounce drop-shadow-[0_0_5px_rgba(220,38,38,0.8)]" />
+                <PacMan className="w-10 h-10 lg:w-12 lg:h-12 text-accent drop-shadow-[0_0_5px_rgba(255,209,102,0.8)]" rotation={90} />
             </div>
 
             {/* Bottom to Top (Wait 15s) */}
             <div className="animate-slide-in-bottom opacity-90 absolute right-[20%] flex flex-col items-center h-full" style={{ animationDuration: '35s', animationDelay: '15s' }}>
-                <PacMan className="w-10 h-10 lg:w-12 lg:h-12 text-accent drop-shadow-[0_0_5px_rgba(255,209,102,0.8)]" rotation={270} />
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-blue-500 animate-bounce drop-shadow-[0_0_5px_rgba(59,130,246,0.8)]" />
+                <div className="h-2"></div>
+                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-blue-500 animate-bounce drop-shadow-[0_0_5px_rgba(59,130,246,0.8)]" />
                 <div className="h-16 lg:h-20"></div>
-                <Ghost className="w-10 h-10 lg:w-12 lg:h-12 text-pink-500 animate-bounce drop-shadow-[0_0_5px_rgba(236,72,153,0.8)]" />
+                <PacMan className="w-10 h-10 lg:w-12 lg:h-12 text-accent drop-shadow-[0_0_5px_rgba(255,209,102,0.8)]" rotation={270} />
             </div>
         </div>
 
@@ -199,9 +205,9 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
-               <div className="bg-card text-card-foreground p-8 rounded-none shadow-none retro-pixel-border border-primary relative overflow-hidden group">
+               <div className="bg-card text-card-foreground p-8 rounded-none shadow-none nes-border-style  relative overflow-hidden group">
                   <div className="absolute top-0 left-0 w-full h-2 bg-primary/20"></div>
-                  <div className="flex items-center gap-3 mb-6 border-b-2 border-primary/20 pb-4">
+                  <div className="flex items-center gap-3 mb-6 border-b-2 /20 pb-4">
                     <div className="w-4 h-4 rounded-none bg-red-500" />
                     <div className="w-4 h-4 rounded-none bg-yellow-500" />
                     <div className="w-4 h-4 rounded-none bg-green-500" />
@@ -267,7 +273,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioData.skills.categories.map((category, idx) => (
-              <Card key={idx} className="bg-secondary border-none p-6 rounded-none relative overflow-hidden group retro-pixel-border">
+              <Card key={idx} className="bg-secondary border-none p-6 rounded-none relative overflow-hidden group nes-border-style">
                 <div className="absolute top-0 right-0 p-4 opacity-20">
                   <Gamepad2 size={60} className="text-primary" />
                 </div>
@@ -301,7 +307,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {portfolioData.projects.items.map((project, idx) => (
-              <Card key={idx} className="bg-card text-card-foreground p-8 rounded-none shadow-none flex flex-col h-full retro-pixel-border border-muted">
+              <Card key={idx} className="bg-card text-card-foreground p-8 rounded-none shadow-none flex flex-col h-full nes-border-style ">
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-3xl font-heading font-bold text-primary-foreground">{project.title}</h3>
                 </div>
@@ -319,7 +325,7 @@ const Index = () => {
                     ))}
                   </div>
 
-                  <div className="flex gap-4 pt-4 border-t border-primary-foreground/10">
+                  <div className="flex gap-4 pt-4 border-t -foreground/10">
                     {project.buttons.map((btn, bIdx) => (
                       <Button
                         key={bIdx}
@@ -327,7 +333,7 @@ const Index = () => {
                         variant={btn.variant === "outline" ? "outline" : "default"}
                         className={`font-heading font-bold rounded-none w-full transition-none active:translate-y-1 ${
                           btn.variant === "outline"
-                            ? "bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-card"
+                            ? "bg-transparent border-2 -foreground text-primary-foreground hover:bg-primary-foreground hover:text-card"
                             : "bg-primary-foreground text-card hover:bg-primary-foreground/90 border-b-4 border-r-4 border-black/30 active:border-none"
                         }`}
                       >
@@ -349,7 +355,7 @@ const Index = () => {
       {/* Contact Section */}
       <section id="contact" className="py-20 mb-20 bg-maze">
         <div className="container mx-auto px-6 max-w-4xl text-center">
-           <div className="bg-secondary retro-pixel-border border-accent p-12 rounded-none relative overflow-hidden">
+           <div className="bg-secondary nes-border-style  p-12 rounded-none relative overflow-hidden">
               <div className="absolute inset-0 bg-maze opacity-10"></div>
 
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-8 relative z-10">
@@ -373,7 +379,7 @@ const Index = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-none border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-none hover:rotate-0"
+                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-none border-2  text-accent hover:bg-accent hover:text-accent-foreground transition-none hover:rotate-0"
                     >
                       {social.href.includes('github') ? <Github size={32} /> : <Linkedin size={32} />}
                     </a>
