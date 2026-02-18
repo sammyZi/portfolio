@@ -126,7 +126,7 @@
 
 /* Hero Section Maze Background */
 .hero-maze-bg {
-  background-color: #000;
+  background-color: #1a0b2e;
   background-image:
     /* Pellets */
     radial-gradient(circle, #ffb8ae 3px, transparent 4px),
@@ -247,7 +247,7 @@
 
 /* Arcade Game Track */
 .arcade-track-bg {
-  background-color: #000;
+  background-color: #1a0b2e;
   background-image:
     /* Track Walls (Blue) */
     linear-gradient(to right, transparent 5%, #1919a6 5%, #1919a6 7%, transparent 7%, transparent 93%, #1919a6 93%, #1919a6 95%, transparent 95%),
@@ -273,7 +273,7 @@
 
 /* Arcade Dots Only Background */
 .arcade-dots-bg {
-  background-color: #000;
+  background-color: #1a0b2e;
   background-image:
     /* Pellets - smaller and more spaced like arcade */
     radial-gradient(circle, #ffb8ae 2px, transparent 2.5px);
