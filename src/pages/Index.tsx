@@ -94,75 +94,97 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden hero-maze-bg">
+      <section id="home" className="min-h-screen flex flex-col items-center justify-center pt-20 relative overflow-hidden arcade-track-bg">
+
+        {/* Game UI - Top Bar */}
+        <div className="absolute top-24 left-0 w-full px-6 flex justify-between font-heading text-xl text-white z-20 pointer-events-none">
+            <div className="flex flex-col animate-pulse">
+                <span className="text-red-500">1UP</span>
+                <span>00</span>
+            </div>
+            <div className="flex flex-col text-center">
+                 <span className="text-accent">HIGH SCORE</span>
+                 <span>5000</span>
+            </div>
+             <div className="flex flex-col text-right animate-pulse delay-150">
+                <span className="text-red-500">2UP</span>
+                <span>00</span>
+            </div>
+        </div>
 
         {/* Realistic Pac-Man Chase Animation */}
         <div className="absolute inset-0 z-0 pointer-events-none flex justify-center items-center opacity-70">
             {/* Using a container aligned with the grid */}
-            <div className="relative w-[360px] h-[360px]">
+            <div className="relative w-[360px] h-[360px] lg:w-[600px] lg:h-[600px]">
                 {/* Pac-Man */}
                 <div className="absolute left-0 top-0 animate-maze-chase">
-                     <PacMan className="w-16 h-16 text-accent drop-shadow-[0_0_10px_rgba(255,209,102,0.8)]" />
+                     <PacMan className="w-16 h-16 lg:w-24 lg:h-24 text-accent drop-shadow-[0_0_10px_rgba(255,209,102,0.8)]" />
                 </div>
 
                 {/* Red Ghost - Chasing close */}
                 <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '0.4s' }}>
-                     <Ghost className="w-16 h-16 text-red-600 animate-bounce drop-shadow-[0_0_8px_rgba(220,38,38,0.8)]" />
+                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-red-600 animate-bounce drop-shadow-[0_0_8px_rgba(220,38,38,0.8)]" />
                 </div>
 
                 {/* Pink Ghost - Chasing slightly behind */}
                 <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '0.8s' }}>
-                     <Ghost className="w-16 h-16 text-pink-500 animate-bounce drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]" />
+                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-pink-500 animate-bounce drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]" />
                 </div>
 
                 {/* Cyan Ghost - Further back */}
                 <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '1.2s' }}>
-                     <Ghost className="w-16 h-16 text-cyan-400 animate-bounce drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-cyan-400 animate-bounce drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
                 </div>
 
                  {/* Orange Ghost - Last */}
                 <div className="absolute left-0 top-0 animate-maze-chase" style={{ animationDelay: '1.6s' }}>
-                     <Ghost className="w-16 h-16 text-orange-500 animate-bounce drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
+                     <Ghost className="w-16 h-16 lg:w-24 lg:h-24 text-orange-500 animate-bounce drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
                 </div>
             </div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="mb-6 inline-block animate-bounce">
-             <span className="bg-accent text-accent-foreground px-4 py-2 rounded-sm font-heading font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(255,209,102,0.6)]">
-               Portfolio
-             </span>
+        {/* Text Content - Positioned like a Score Box or Dialog */}
+        <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+
+          <div className="retro-ui-box flex flex-col items-center gap-6">
+            <div className="mb-2 inline-block animate-bounce">
+                <span className="bg-accent text-accent-foreground px-4 py-2 rounded-sm font-heading font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(255,209,102,0.6)]">
+                Portfolio
+                </span>
+            </div>
+
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground tracking-tight">
+                <span className="text-primary block mb-2 text-xl md:text-2xl uppercase tracking-widest">Player Select</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary drop-shadow-md">{portfolioData.about.name}</span>
+            </h1>
+
+            <div className="text-xl md:text-3xl font-mono text-muted-foreground h-[60px] min-w-[300px] flex items-center justify-center">
+                <Typewriter
+                options={{
+                    strings: portfolioData.hero.typingLines.map(l => l.text),
+                    autoStart: true,
+                    loop: true,
+                    delay: 50,
+                    deleteSpeed: 30,
+                    cursor: '█'
+                }}
+                />
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full mt-4">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none border-b-4 border-r-4 border-black active:border-b-0 active:border-r-0 active:translate-y-1 active:translate-x-1 uppercase tracking-wider w-full sm:w-auto" asChild>
+                <a href="#projects">
+                    Start Game
+                </a>
+                </Button>
+                <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none active:translate-y-1 bg-transparent uppercase tracking-wider w-full sm:w-auto" asChild>
+                <a href="#contact">
+                    Insert Coin
+                </a>
+                </Button>
+            </div>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-heading font-bold mb-6 text-foreground tracking-tight bg-black/70 backdrop-blur-sm p-4 rounded-lg inline-block retro-pixel-border border-primary">
-             <span className="text-primary block mb-2">Hello, World!</span>
-             I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">{portfolioData.about.name}</span>
-          </h1>
-
-          <div className="text-xl md:text-3xl font-mono text-muted-foreground mb-12 h-[60px] bg-black/50 backdrop-blur-sm p-2 rounded-lg inline-block min-w-[300px] mt-4">
-            <Typewriter
-              options={{
-                strings: portfolioData.hero.typingLines.map(l => l.text),
-                autoStart: true,
-                loop: true,
-                delay: 50,
-                deleteSpeed: 30,
-              }}
-            />
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none border-b-4 border-r-4 border-black active:border-b-0 active:border-r-0 active:translate-y-1 active:translate-x-1" asChild>
-              <a href="#projects">
-                 View Projects
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none active:translate-y-1 bg-black/50" asChild>
-              <a href="#contact">
-                 Contact Me
-              </a>
-            </Button>
-          </div>
         </div>
       </section>
 
