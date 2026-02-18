@@ -137,3 +137,110 @@
   background-size: 40px 40px, 120px 120px, 120px 120px;
   background-position: 20px 20px, 10px 10px, 10px 10px;
 }
+
+/* Pixelated Border */
+.pixel-border {
+  border: 4px solid #ff8c42; /* Primary color */
+  border-radius: 0;
+  box-shadow:
+    4px 0 0 0 #ff8c42,
+    0 4px 0 0 #ff8c42,
+    4px 4px 0 0 #ff8c42,
+    4px 0 0 0 #ff8c42 inset,
+    0 4px 0 0 #ff8c42 inset;
+  position: relative;
+  /* More complex pixel effect can be done with SVGs or multiple box shadows */
+  /* Simplified for now: just thick border, no radius. */
+  /* Let's try a better pixel border using clip-path or multiple box shadows */
+  box-shadow: none;
+  border: none;
+  padding: 4px; /* Space for the border */
+  background:
+    linear-gradient(#ff8c42, #ff8c42) left top,
+    linear-gradient(#ff8c42, #ff8c42) left bottom,
+    linear-gradient(#ff8c42, #ff8c42) right top,
+    linear-gradient(#ff8c42, #ff8c42) right bottom;
+  background-size: 4px 100%, 100% 4px, 4px 100%, 100% 4px;
+  background-repeat: no-repeat;
+}
+
+/* Better Pixel Border using box-shadow on a pseudo-element or container */
+.pixel-corners {
+  position: relative;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 0 0 4px #ff8c42; /* Outer border */
+}
+
+/* Truly pixelated corners require a specific SVG or complex CSS. Let's try the box-shadow method for "staircase" corners. */
+.nes-container {
+  border-style: solid;
+  border-width: 4px;
+  border-image-slice: 2;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-source: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8" ?><svg version="1.1" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z" fill="rgb(255,140,66)" /></svg>');
+  border-image-outset: 2;
+}
+
+/* Fallback / Simple Pixel Border */
+.pixel-box {
+  position: relative;
+  border: 4px solid #ff8c42;
+  /* Remove border radius */
+  border-radius: 0 !important;
+  /* Add blocky shadows */
+  box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.5);
+}
+
+.pixel-box::before {
+  content: "";
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border: 4px solid transparent;
+  /* This approach is getting complicated. Let's stick to sharp corners and a shadow. */
+}
+
+/* Retro Pixel Border */
+.retro-pixel-border {
+  position: relative;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #ff8c42; /* Primary */
+  border-radius: 0;
+  box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.5);
+}
+
+.retro-pixel-border::before {
+  content: "";
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border: 4px solid transparent; /* Placeholder */
+}
+
+/* Game Animation Keyframes - Hero Maze */
+@keyframes maze-chase {
+  /* Start top-left */
+  0% { transform: translate(0, 0) rotate(0deg); }
+  /* Move Right */
+  25% { transform: translate(240px, 0) rotate(0deg); }
+  /* Turn Down */
+  26% { transform: translate(240px, 0) rotate(90deg); }
+  /* Move Down */
+  50% { transform: translate(240px, 120px) rotate(90deg); }
+  /* Turn Left */
+  51% { transform: translate(240px, 120px) rotate(180deg); }
+  /* Move Left */
+  75% { transform: translate(0, 120px) rotate(180deg); }
+  /* Turn Up */
+  76% { transform: translate(0, 120px) rotate(270deg); }
+  /* Move Up */
+  99% { transform: translate(0, 0) rotate(270deg); }
+  /* Reset */
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+.animate-maze-chase {
+  animation: maze-chase 8s linear infinite;
+  /* Ensure positioning aligns with grid (e.g., 40px grid) */
+}
