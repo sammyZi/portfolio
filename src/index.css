@@ -280,3 +280,8 @@
   background-size: 40px 40px; /* Grid spacing */
   background-position: 20px 20px; /* Center pellets */
 }
+
+/* Retro Text Shadow */
+.retro-text-shadow {
+  text-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(0,0,0,0.5);
+}

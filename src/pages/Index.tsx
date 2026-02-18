@@ -65,7 +65,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-body bg-maze relative selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-white retro-text-shadow font-body bg-maze relative selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b-4 border-primary">
@@ -135,14 +135,14 @@ const Index = () => {
         {/* Text Content - Positioned like a Score Box or Dialog */}
         <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center mt-20">
 
-          <div className="retro-ui-box flex flex-col items-center gap-6 bg-black/90">
+          <div className="flex flex-col items-center gap-6 bg-black/90">
             <div className="mb-2 inline-block animate-bounce">
                 <span className="bg-accent text-accent-foreground px-4 py-2 rounded-sm font-heading font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(255,209,102,0.6)]">
                 Portfolio
                 </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground tracking-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-white retro-text-shadow tracking-tight">
                 <span className="text-primary block mb-2 text-xl md:text-2xl uppercase tracking-widest"> </span>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary drop-shadow-md">{portfolioData.about.name}</span>
             </h1>
@@ -264,7 +264,7 @@ const Index = () => {
                   {category.items.map((item, i) => (
                     <div key={i} className="flex items-center gap-3 bg-background/30 p-3 rounded-none hover:bg-primary/20 transition-colors">
                       <img src={item.icon} alt={item.name} className="w-6 h-6" />
-                      <span className="font-heading font-semibold text-sm text-foreground">{item.name}</span>
+                      <span className="font-heading font-semibold text-sm text-white retro-text-shadow">{item.name}</span>
                     </div>
                   ))}
                 </div>
@@ -340,7 +340,7 @@ const Index = () => {
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-8 relative z-10">
                 Let's Connect
               </h2>
-              <p className="text-xl text-foreground mb-12 font-medium relative z-10">
+              <p className="text-xl text-white retro-text-shadow mb-12 font-medium relative z-10">
                 Don't let the game end here. <br/> I'm available for new opportunities
               </p>
 
