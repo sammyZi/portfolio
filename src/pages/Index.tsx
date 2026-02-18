@@ -99,8 +99,8 @@ const Index = () => {
         {/* Animated Background Pac-Man Elements */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
             {/* Top Row: Left to Right */}
-            <div className="absolute top-[10%] left-[-10%] animate-slide-in-right opacity-10 flex items-center gap-6">
-                <PacMan className="w-16 h-16 text-accent" />
+            <div className="absolute top-[10%] left-[-10%] animate-slide-in-right opacity-40 flex items-center gap-6">
+                <PacMan className="w-24 h-24 text-accent" />
                 <div className="flex gap-4">
                   <div className="w-3 h-3 bg-accent rounded-sm" />
                   <div className="w-3 h-3 bg-accent rounded-sm" />
@@ -109,15 +109,15 @@ const Index = () => {
             </div>
 
              {/* Bottom Row: Right to Left */}
-             <div className="absolute bottom-[20%] right-[-10%] animate-slide-in-left opacity-10 flex items-center gap-6">
-                 <PacMan className="w-12 h-12 text-accent" rotation={180} />
-                 <Ghost className="w-10 h-10 text-red-500 animate-bounce" />
-                 <Ghost className="w-10 h-10 text-pink-500 animate-bounce delay-100" />
+             <div className="absolute bottom-[20%] right-[-10%] animate-slide-in-left opacity-40 flex items-center gap-6">
+                 <PacMan className="w-20 h-20 text-accent" rotation={180} />
+                 <Ghost className="w-16 h-16 text-red-500 animate-bounce" />
+                 <Ghost className="w-16 h-16 text-pink-500 animate-bounce delay-100" />
             </div>
 
              {/* Left Column: Top to Bottom */}
-             <div className="absolute left-[5%] top-[-10%] animate-slide-in-top opacity-5 flex flex-col items-center gap-6">
-                 <PacMan className="w-10 h-10 text-accent" rotation={90} />
+             <div className="absolute left-[5%] top-[-10%] animate-slide-in-top opacity-30 flex flex-col items-center gap-6">
+                 <PacMan className="w-16 h-16 text-accent" rotation={90} />
                  <div className="flex flex-col gap-4">
                     <div className="w-2 h-2 bg-accent rounded-sm" />
                     <div className="w-2 h-2 bg-accent rounded-sm" />
@@ -125,9 +125,9 @@ const Index = () => {
             </div>
 
             {/* Right Column: Bottom to Top */}
-            <div className="absolute right-[5%] bottom-[-10%] animate-slide-in-bottom opacity-5 flex flex-col items-center gap-6">
-                 <PacMan className="w-14 h-14 text-accent" rotation={270} />
-                 <Ghost className="w-12 h-12 text-cyan-500 animate-bounce" />
+            <div className="absolute right-[5%] bottom-[-10%] animate-slide-in-bottom opacity-30 flex flex-col items-center gap-6">
+                 <PacMan className="w-24 h-24 text-accent" rotation={270} />
+                 <Ghost className="w-20 h-20 text-cyan-500 animate-bounce" />
             </div>
         </div>
 
@@ -202,7 +202,7 @@ const Index = () => {
                     ))}
                   </div>
 
-                  <PacManGhost color="#3a1f5c" className="absolute -bottom-10 -right-10 w-40 h-40 opacity-10" />
+                  <PacManGhost color="#3a1f5c" className="absolute -bottom-10 -right-10 w-40 h-40 opacity-40" />
                </div>
             </div>
 
@@ -328,7 +328,7 @@ const Index = () => {
       <section id="contact" className="py-20 mb-20">
         <div className="container mx-auto px-6 max-w-4xl text-center">
            <div className="bg-secondary border-4 border-accent p-12 rounded-sm relative overflow-hidden">
-              <div className="absolute inset-0 bg-maze opacity-10"></div>
+              <div className="absolute inset-0 bg-maze opacity-40"></div>
 
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-8 relative z-10">
                 Let's Connect
@@ -351,7 +351,7 @@ const Index = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-sm border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-none hover:rotate-0"
+                      className="w-24 h-24 bg-muted flex items-center justify-center rounded-sm border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-none hover:rotate-0"
                     >
                       {social.href.includes('github') ? <Github size={32} /> : <Linkedin size={32} />}
                     </a>
@@ -369,7 +369,7 @@ const Index = () => {
              © {new Date().getFullYear()} {portfolioData.about.name} • Thanks for visiting
           </p>
         </div>
-        <div className="absolute bottom-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-50"></div>
+        <div className="absolute bottom-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-300"></div>
       </footer>
     </div>
   );
