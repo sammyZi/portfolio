@@ -123,10 +123,6 @@ const Index = () => {
               />
             </div>
 
-            <p className="text-sm sm:text-base text-muted-foreground max-w-sm sm:max-w-xl leading-relaxed px-2">
-              {portfolioData.hero.subtitle}
-            </p>
-
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center w-full mt-2 sm:mt-4 px-4 sm:px-0">
               <Button size="lg" className="retro-btn-primary font-heading font-bold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-sm uppercase tracking-wider w-full sm:w-auto" asChild>
                 <a href="#projects">View Projects</a>
@@ -276,8 +272,8 @@ const Index = () => {
                         asChild
                         variant={btn.variant === "outline" ? "outline" : "default"}
                         className={`font-heading font-bold rounded-none w-full text-sm sm:text-base transition-none active:translate-y-1 ${btn.variant === "outline"
-                            ? "bg-transparent border-2 text-primary-foreground hover:bg-primary-foreground hover:text-card"
-                            : "bg-primary-foreground text-card hover:bg-primary-foreground/90 border-b-4 border-r-4 border-black/30 active:border-none"
+                          ? "bg-transparent border-2 text-primary-foreground hover:bg-primary-foreground hover:text-card"
+                          : "bg-primary-foreground text-card hover:bg-primary-foreground/90 border-b-4 border-r-4 border-black/30 active:border-none"
                           }`}
                       >
                         <a href={btn.link} target="_blank" rel="noopener noreferrer">
@@ -335,14 +331,15 @@ const Index = () => {
             {/* Contact details row */}
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-6 relative z-10">
               {portfolioData.contact.info.details
-                .filter(d => d.href.includes('mailto') || d.href.includes('tel') || d.href.includes('samarthbhinge'))
+                .filter(d => d.href.includes('mailto') || d.href.includes('tel'))
                 .map((detail, idx) => (
                   <a
                     key={idx}
                     href={detail.href}
-                    className="text-xs sm:text-sm font-mono text-muted-foreground hover:text-accent transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-muted/60 border border-accent/20 font-mono text-sm sm:text-base text-foreground hover:text-accent hover:border-accent transition-colors"
                   >
-                    <span className="text-primary">{detail.label}</span> {detail.value}
+                    <span className="text-accent font-bold">{detail.label}</span>
+                    <span>{detail.value}</span>
                   </a>
                 ))}
             </div>
