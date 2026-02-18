@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'heading': ['"Space Grotesk"', '"Orbitron"', '"Exo 2"', 'sans-serif'],
-				'body': ['"Poppins"', 'sans-serif'],
+				'heading': ['"DotGothic16"', '"Space Grotesk"', '"Orbitron"', '"Exo 2"', 'sans-serif'],
+				'body': ['"VT323"', '"Poppins"', 'sans-serif'],
 				'mono': ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
 				'sans': ['"Poppins"', 'system-ui', 'sans-serif'],
 			},
@@ -110,6 +110,14 @@ export default {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-10px)' }
 				},
+'slide-in-right': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(100vw)' }
+				},
+				'slide-in-left': {
+					'0%': { transform: 'translateX(100vw)' },
+					'100%': { transform: 'translateX(-100%)' }
+				},
 				'blink': {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0' }
@@ -121,6 +129,8 @@ export default {
 				'chomp': 'chomp 0.3s linear infinite',
 				'chomp-bottom': 'chomp-bottom 0.3s linear infinite',
 				'float': 'float 3s ease-in-out infinite',
+'slide-in-right': 'slide-in-right 20s linear infinite',
+				'slide-in-left': 'slide-in-left 20s linear infinite',
 				'blink': 'blink 1s steps(2) infinite'
 			}
 		}

@@ -71,7 +71,7 @@ const Index = () => {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b-4 border-primary">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="#home" className="text-2xl font-heading font-bold text-accent tracking-widest hover:scale-105 transition-transform">
+          <a href="#home" className="text-xl font-heading font-bold text-accent tracking-widest hover:scale-105 transition-transform">
             &lt;{portfolioData.navigation.brand} /&gt;
           </a>
           
@@ -104,12 +104,12 @@ const Index = () => {
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="mb-6 inline-block animate-bounce">
-             <span className="bg-accent text-accent-foreground px-4 py-2 rounded-full font-heading font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(255,209,102,0.6)]">
-               Ready Player One
+             <span className="bg-accent text-accent-foreground px-4 py-2 rounded-sm font-heading font-bold text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(255,209,102,0.6)]">
+               Portfolio
              </span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-foreground tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-heading font-bold mb-6 text-foreground tracking-tight">
              <span className="text-primary block mb-2">Hello, World!</span>
              I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">{portfolioData.about.name}</span>
           </h1>
@@ -127,26 +127,26 @@ const Index = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-2xl shadow-[4px_4px_0px_0px_rgba(255,209,102,1)] hover:shadow-[2px_2px_0px_0px_rgba(255,209,102,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all" asChild>
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-lg shadow-[4px_4px_0px_0px_rgba(255,209,102,1)] hover:shadow-[2px_2px_0px_0px_rgba(255,209,102,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all" asChild>
               <a href="#projects">
-                 Start Game
+                 View Projects
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-2xl" asChild>
+            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-lg" asChild>
               <a href="#contact">
-                 Insert Coin
+                 Contact Me
               </a>
             </Button>
           </div>
 
           {/* Pacman Animation */}
           <div className="absolute bottom-10 left-0 w-full overflow-hidden h-20 pointer-events-none">
-             <div className="absolute animate-[slide-in-right_10s_linear_infinite] flex items-center gap-10 left-full">
+             <div className="absolute animate-slide-in-right opacity-30 flex items-center gap-10 left-full">
                 <PacMan className="w-12 h-12 text-accent" />
                 <div className="flex gap-4">
-                  <div className="w-3 h-3 bg-accent rounded-full" />
-                  <div className="w-3 h-3 bg-accent rounded-full" />
-                  <div className="w-3 h-3 bg-accent rounded-full" />
+                  <div className="w-3 h-3 bg-accent rounded-sm" />
+                  <div className="w-3 h-3 bg-accent rounded-sm" />
+                  <div className="w-3 h-3 bg-accent rounded-sm" />
                 </div>
                 <Ghost className="w-12 h-12 text-red-500 animate-bounce" />
                 <Ghost className="w-12 h-12 text-pink-500 animate-bounce delay-100" />
@@ -164,13 +164,13 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
-               <div className="bg-card text-card-foreground p-8 rounded-3xl shadow-[8px_8px_0px_0px_rgba(255,140,66,1)] border-4 border-primary relative overflow-hidden group hover:translate-y-[-5px] transition-transform duration-300">
+               <div className="bg-card text-card-foreground p-8 rounded-xl shadow-[8px_8px_0px_0px_rgba(255,140,66,1)] border-4 border-primary relative overflow-hidden group hover:translate-y-[-5px] transition-transform duration-300">
                   <div className="absolute top-0 left-0 w-full h-2 bg-primary/20"></div>
                   <div className="flex items-center gap-3 mb-6 border-b-2 border-primary/20 pb-4">
-                    <div className="w-4 h-4 rounded-full bg-red-500" />
-                    <div className="w-4 h-4 rounded-full bg-yellow-500" />
-                    <div className="w-4 h-4 rounded-full bg-green-500" />
-                    <h2 className="ml-auto font-heading font-bold text-xl uppercase text-primary tracking-widest">Player 1 Info</h2>
+                    <div className="w-4 h-4 rounded-sm bg-red-500" />
+                    <div className="w-4 h-4 rounded-sm bg-yellow-500" />
+                    <div className="w-4 h-4 rounded-sm bg-green-500" />
+                    <h2 className="ml-auto font-heading font-bold text-xl uppercase text-primary tracking-widest">About Me</h2>
                   </div>
 
                   <p className="text-lg mb-6 leading-relaxed font-medium">
@@ -194,8 +194,8 @@ const Index = () => {
             </div>
 
             <div className="lg:w-1/2 text-center lg:text-left">
-              <h2 className="text-4xl md:text-6xl font-heading font-bold mb-8 text-accent">
-                Level 1: <br/> <span className="text-foreground">The Developer</span>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold mb-8 text-accent">
+                About Me
               </h2>
               <div className="space-y-6">
                 <p className="text-xl text-muted-foreground leading-relaxed">
@@ -204,13 +204,13 @@ const Index = () => {
                   and optimizing performance.
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                  <div className="px-6 py-3 rounded-full bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
+                  <div className="px-6 py-3 rounded-sm bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
                     <Code size={20} /> Clean Code
                   </div>
-                  <div className="px-6 py-3 rounded-full bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
+                  <div className="px-6 py-3 rounded-sm bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
                     <Terminal size={20} /> Performance
                   </div>
-                  <div className="px-6 py-3 rounded-full bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
+                  <div className="px-6 py-3 rounded-sm bg-secondary text-secondary-foreground font-heading font-bold border-2 border-secondary-foreground/20 flex items-center gap-2">
                     <Gamepad2 size={20} /> UX Design
                   </div>
                 </div>
@@ -226,18 +226,18 @@ const Index = () => {
       <section id="skills" className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-heading font-bold text-accent mb-4">Power Ups</h2>
-            <p className="text-xl text-muted-foreground font-mono">Select your weapon</p>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-4">Skills</h2>
+            <p className="text-xl text-muted-foreground font-mono">My Tech Stack</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioData.skills.categories.map((category, idx) => (
-              <Card key={idx} className="bg-secondary border-none p-6 rounded-3xl relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,140,66,0.3)] transition-all duration-300">
+              <Card key={idx} className="bg-secondary border-none p-6 rounded-xl relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,140,66,0.3)] transition-all duration-300">
                 <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity">
                   <Gamepad2 size={60} className="text-primary" />
                 </div>
 
-                <h3 className="text-2xl font-heading font-bold text-primary mb-2 relative z-10">{category.title}</h3>
+                <h3 className="text-xl font-heading font-bold text-primary mb-2 relative z-10">{category.title}</h3>
                 <p className="text-muted-foreground mb-6 relative z-10 text-sm">{category.description}</p>
 
                 <div className="grid grid-cols-2 gap-4 relative z-10">
@@ -260,13 +260,13 @@ const Index = () => {
       <section id="projects" className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-heading font-bold text-accent mb-4">High Scores</h2>
-            <p className="text-xl text-muted-foreground font-mono">Recent missions completed</p>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-4">Projects</h2>
+            <p className="text-xl text-muted-foreground font-mono">What I've Built</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {portfolioData.projects.items.map((project, idx) => (
-              <Card key={idx} className="bg-card text-card-foreground border-4 border-muted p-8 rounded-3xl shadow-lg hover:shadow-[8px_8px_0px_0px_rgba(20,10,31,0.5)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
+              <Card key={idx} className="bg-card text-card-foreground border-4 border-muted p-8 rounded-xl shadow-lg hover:shadow-[8px_8px_0px_0px_rgba(20,10,31,0.5)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-3xl font-heading font-bold text-primary-foreground">{project.title}</h3>
                   <div className="bg-primary-foreground/10 p-2 rounded-lg">
@@ -281,7 +281,7 @@ const Index = () => {
                 <div className="space-y-6 mt-auto">
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="px-3 py-1 bg-white/20 rounded-full text-sm font-bold font-mono text-primary-foreground">
+                      <span key={tIdx} className="px-3 py-1 bg-white/20 rounded-sm text-sm font-bold font-mono text-primary-foreground">
                         #{tag.name}
                       </span>
                     ))}
@@ -317,18 +317,18 @@ const Index = () => {
       {/* Contact Section */}
       <section id="contact" className="py-20 mb-20">
         <div className="container mx-auto px-6 max-w-4xl text-center">
-           <div className="bg-secondary border-4 border-accent p-12 rounded-[3rem] relative overflow-hidden">
+           <div className="bg-secondary border-4 border-accent p-12 rounded-lg relative overflow-hidden">
               <div className="absolute inset-0 bg-maze opacity-10"></div>
 
-              <h2 className="text-4xl md:text-6xl font-heading font-bold text-accent mb-8 relative z-10">
-                Game Over?
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-8 relative z-10">
+                Let's Connect
               </h2>
-              <p className="text-2xl text-foreground mb-12 font-medium relative z-10">
-                Don't let the game end here. <br/> Insert coin to continue...
+              <p className="text-xl text-foreground mb-12 font-medium relative z-10">
+                Don't let the game end here. <br/> I'm available for new opportunities
               </p>
 
               <div className="flex flex-wrap justify-center gap-6 relative z-10">
-                <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground font-heading font-bold text-xl px-10 py-8 rounded-full shadow-lg transition-transform hover:scale-105" asChild>
+                <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground font-heading font-bold text-xl px-10 py-8 rounded-sm shadow-lg transition-transform hover:scale-105" asChild>
                   <a href={portfolioData.contact.ctaLink}>
                     <Mail className="mr-3" /> Contact Me
                   </a>
@@ -341,7 +341,7 @@ const Index = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-full border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:rotate-12"
+                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-sm border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:rotate-12"
                     >
                       {social.href.includes('github') ? <Github size={32} /> : <Linkedin size={32} />}
                     </a>
@@ -356,7 +356,7 @@ const Index = () => {
       <footer className="bg-muted py-8 text-center relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <p className="font-mono text-muted-foreground">
-             © {new Date().getFullYear()} {portfolioData.about.name} • Insert Coin to Play Again
+             © {new Date().getFullYear()} {portfolioData.about.name} • Thanks for visiting
           </p>
         </div>
         <div className="absolute bottom-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-50"></div>
