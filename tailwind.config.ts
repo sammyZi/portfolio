@@ -114,6 +114,14 @@ export default {
 					'0%': { transform: 'translateX(-100%)' },
 					'100%': { transform: 'translateX(100vw)' }
 				},
+'slide-in-top': {
+					'0%': { transform: 'translateY(-100%)' },
+					'100%': { transform: 'translateY(100vh)' }
+				},
+				'slide-in-bottom': {
+					'0%': { transform: 'translateY(100vh)' },
+					'100%': { transform: 'translateY(-100%)' }
+				},
 				'slide-in-left': {
 					'0%': { transform: 'translateX(100vw)' },
 					'100%': { transform: 'translateX(-100%)' }
@@ -130,6 +138,9 @@ export default {
 				'chomp-bottom': 'chomp-bottom 0.3s linear infinite',
 				'float': 'float 3s ease-in-out infinite',
 'slide-in-right': 'slide-in-right 20s linear infinite',
+'slide-in-left': 'slide-in-left 25s linear infinite',
+				'slide-in-top': 'slide-in-top 30s linear infinite',
+				'slide-in-bottom': 'slide-in-bottom 35s linear infinite',
 				'slide-in-left': 'slide-in-left 20s linear infinite',
 				'blink': 'blink 1s steps(2) infinite'
 			}
