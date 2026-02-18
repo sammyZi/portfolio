@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import Typewriter from "typewriter-effect";
 import portfolioData from "@/data/portfolio.json";
 import { Ghost, Gamepad2, Code, Terminal, Send, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
@@ -71,7 +70,7 @@ const Index = () => {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b-4 border-primary">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="#home" className="text-xl font-heading font-bold text-accent tracking-widest hover:scale-105 transition-transform">
+          <a href="#home" className="text-xl font-heading font-bold text-accent tracking-widest hover:scale-105 ">
             &lt;{portfolioData.navigation.brand} /&gt;
           </a>
           
@@ -87,11 +86,9 @@ const Index = () => {
                 {link.name}
               </a>
             ))}
-            <ThemeToggle />
           </div>
           
           <div className="md:hidden">
-             <ThemeToggle />
           </div>
         </div>
       </nav>
@@ -127,12 +124,12 @@ const Index = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-lg shadow-[4px_4px_0px_0px_rgba(255,209,102,1)] hover:shadow-[2px_2px_0px_0px_rgba(255,209,102,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all" asChild>
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none border-b-4 border-r-4 border-black active:border-b-0 active:border-r-0 active:translate-y-1 active:translate-x-1" asChild>
               <a href="#projects">
                  View Projects
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-lg" asChild>
+            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10 font-heading font-bold text-lg px-8 py-6 rounded-sm shadow-none transition-none active:translate-y-1" asChild>
               <a href="#contact">
                  Contact Me
               </a>
@@ -164,7 +161,7 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
-               <div className="bg-card text-card-foreground p-8 rounded-xl shadow-[8px_8px_0px_0px_rgba(255,140,66,1)] border-4 border-primary relative overflow-hidden group hover:translate-y-[-5px] transition-transform duration-300">
+               <div className="bg-card text-card-foreground p-8 rounded-sm shadow-none border-4 border-primary relative overflow-hidden group">
                   <div className="absolute top-0 left-0 w-full h-2 bg-primary/20"></div>
                   <div className="flex items-center gap-3 mb-6 border-b-2 border-primary/20 pb-4">
                     <div className="w-4 h-4 rounded-sm bg-red-500" />
@@ -182,14 +179,14 @@ const Index = () => {
 
                   <div className="grid grid-cols-2 gap-4">
                     {portfolioData.about.details.map((detail, idx) => (
-                      <div key={idx} className="bg-background/10 p-4 rounded-xl backdrop-blur-sm">
+                      <div key={idx} className="bg-background/10 p-4 rounded-sm backdrop-blur-sm">
                         <span className="block text-primary font-mono text-sm uppercase mb-1">{detail.label}</span>
                         <span className="font-heading font-bold text-lg">{detail.value}</span>
                       </div>
                     ))}
                   </div>
 
-                  <PacManGhost color="#3a1f5c" className="absolute -bottom-10 -right-10 w-40 h-40 opacity-10 rotate-12 group-hover:rotate-0 transition-transform duration-500" />
+                  <PacManGhost color="#3a1f5c" className="absolute -bottom-10 -right-10 w-40 h-40 opacity-10" />
                </div>
             </div>
 
@@ -232,8 +229,8 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioData.skills.categories.map((category, idx) => (
-              <Card key={idx} className="bg-secondary border-none p-6 rounded-xl relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,140,66,0.3)] transition-all duration-300">
-                <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity">
+              <Card key={idx} className="bg-secondary border-none p-6 rounded-sm relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-4 opacity-20">
                   <Gamepad2 size={60} className="text-primary" />
                 </div>
 
@@ -242,7 +239,7 @@ const Index = () => {
 
                 <div className="grid grid-cols-2 gap-4 relative z-10">
                   {category.items.map((item, i) => (
-                    <div key={i} className="flex items-center gap-3 bg-background/30 p-3 rounded-xl hover:bg-primary/20 transition-colors">
+                    <div key={i} className="flex items-center gap-3 bg-background/30 p-3 rounded-sm hover:bg-primary/20 transition-colors">
                       <img src={item.icon} alt={item.name} className="w-6 h-6" />
                       <span className="font-heading font-semibold text-sm text-foreground">{item.name}</span>
                     </div>
@@ -266,10 +263,10 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {portfolioData.projects.items.map((project, idx) => (
-              <Card key={idx} className="bg-card text-card-foreground border-4 border-muted p-8 rounded-xl shadow-lg hover:shadow-[8px_8px_0px_0px_rgba(20,10,31,0.5)] transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
+              <Card key={idx} className="bg-card text-card-foreground border-4 border-muted p-8 rounded-sm shadow-none flex flex-col h-full">
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-3xl font-heading font-bold text-primary-foreground">{project.title}</h3>
-                  <div className="bg-primary-foreground/10 p-2 rounded-lg">
+                  <div className="bg-primary-foreground/10 p-2 rounded-sm">
                     <ExternalLink className="text-primary-foreground" size={24} />
                   </div>
                 </div>
@@ -293,10 +290,10 @@ const Index = () => {
                         key={bIdx}
                         asChild
                         variant={btn.variant === "outline" ? "outline" : "default"}
-                        className={`font-heading font-bold rounded-xl ${
+                        className={`font-heading font-bold rounded-sm w-full transition-none active:translate-y-1 ${
                           btn.variant === "outline"
                             ? "bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-card"
-                            : "bg-primary-foreground text-card hover:bg-primary-foreground/90"
+                            : "bg-primary-foreground text-card hover:bg-primary-foreground/90 border-b-4 border-r-4 border-black/30 active:border-none"
                         }`}
                       >
                         <a href={btn.link} target="_blank" rel="noopener noreferrer">
@@ -317,7 +314,7 @@ const Index = () => {
       {/* Contact Section */}
       <section id="contact" className="py-20 mb-20">
         <div className="container mx-auto px-6 max-w-4xl text-center">
-           <div className="bg-secondary border-4 border-accent p-12 rounded-lg relative overflow-hidden">
+           <div className="bg-secondary border-4 border-accent p-12 rounded-sm relative overflow-hidden">
               <div className="absolute inset-0 bg-maze opacity-10"></div>
 
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-accent mb-8 relative z-10">
@@ -328,7 +325,7 @@ const Index = () => {
               </p>
 
               <div className="flex flex-wrap justify-center gap-6 relative z-10">
-                <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground font-heading font-bold text-xl px-10 py-8 rounded-sm shadow-lg transition-transform hover:scale-105" asChild>
+                <Button size="lg" className="bg-primary hover:bg-accent text-primary-foreground font-heading font-bold text-xl px-10 py-8 rounded-sm shadow-none border-b-4 border-r-4 border-black transition-transform active:scale-95 active:border-none" asChild>
                   <a href={portfolioData.contact.ctaLink}>
                     <Mail className="mr-3" /> Contact Me
                   </a>
@@ -341,7 +338,7 @@ const Index = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-sm border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:rotate-12"
+                      className="w-16 h-16 bg-muted flex items-center justify-center rounded-sm border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-none hover:rotate-0"
                     >
                       {social.href.includes('github') ? <Github size={32} /> : <Linkedin size={32} />}
                     </a>
