@@ -163,7 +163,7 @@ const Index = () => {
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   {portfolioData.about.details.map((detail, idx) => (
                     <div key={idx} className="bg-background/10 p-3 sm:p-4 rounded-none backdrop-blur-sm">
-                      <span className="block text-primary font-mono text-xs sm:text-sm uppercase mb-1">{detail.label}</span>
+                      <span className="block font-mono text-xs sm:text-sm uppercase mb-1" style={{ color: '#5b1fa0' }}>{detail.label}</span>
                       <span className="font-heading font-bold text-sm sm:text-lg">{detail.value}</span>
                     </div>
                   ))}
@@ -215,11 +215,11 @@ const Index = () => {
             {portfolioData.skills.categories.map((category, idx) => (
               <Card key={idx} className="bg-muted border-none p-5 sm:p-6 rounded-none relative overflow-hidden group nes-border-style">
                 <div className="absolute top-0 right-0 p-3 sm:p-4 opacity-40">
-                  <Gamepad2 size={48} className="text-accent" />
+                  <Gamepad2 size={48} style={{ color: '#5b1fa0' }} />
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-heading font-bold text-[#1a0b2e] mb-1 sm:mb-2 relative z-10">{category.title}</h3>
-                <p className="text-[#2a1540] mb-4 sm:mb-6 relative z-10 text-sm sm:text-base font-semibold">{category.description}</p>
+                <h3 className="text-xl sm:text-2xl font-heading font-bold mb-1 sm:mb-2 relative z-10" style={{ color: '#5b1fa0' }}>{category.title}</h3>
+                <p className="mb-4 sm:mb-6 relative z-10 text-sm sm:text-base font-semibold" style={{ color: '#7c3abf' }}>{category.description}</p>
 
                 <div className="grid grid-cols-2 gap-2 sm:gap-4 relative z-10">
                   {category.items.map((item, i) => (
